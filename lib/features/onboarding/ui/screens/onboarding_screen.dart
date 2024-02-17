@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/utils/constants.dart';
 import '../widgets/dots_indicator.dart';
+import '../widgets/on_boarding_rounded_container.dart';
 import '../widgets/onboarding_page_view_item.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -36,66 +37,75 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        body: Stack(
           children: [
-            Align(
-              alignment: AlignmentDirectional.topEnd,
-              child: Image.asset(
-                "assets/images/orange.png",
-                height: 172.h,
-                width: 172.w,
-              ),
-            ),
-            Expanded(
-              child: PageView.builder(
-                  controller: pageController,
-                  itemCount: Constants.onBoardingListData.length,
-                  onPageChanged: (index) {
-                    setState(() {
-                      pageIndex = index;
-                    });
-                  },
-                  itemBuilder: (context, index) {
-                    return OnBoardPageViewItem(
-                      img: Constants.onBoardingListData[index].img,
-                      title: Constants.onBoardingListData[index].title,
-                      description:
-                          Constants.onBoardingListData[index].description,
-                    );
-                  }),
-            ),
-            verticalSpace(16.h),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ...List.generate(
-                  Constants.onBoardingListData.length,
-                  (index) => Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: DotsIndicator(
-                      isActive: pageIndex == index,
+                Expanded(
+                  child: PageView.builder(
+                      controller: pageController,
+                      itemCount: Constants.onBoardingListData.length,
+                      onPageChanged: (index) {
+                        setState(() {
+                          pageIndex = index;
+                        });
+                      },
+                      itemBuilder: (context, index) {
+                        return OnBoardPageViewItem(
+                          img: Constants.onBoardingListData[index].img,
+                          title: Constants.onBoardingListData[index].title,
+                          description:
+                              Constants.onBoardingListData[index].description,
+                        );
+                      }),
+                ),
+                verticalSpace(16.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ...List.generate(
+                      Constants.onBoardingListData.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: DotsIndicator(
+                          isActive: pageIndex == index,
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 60.h),
+                  child: AppTextButton(
+                      buttonText: pageIndex != 2 ? "Next" : "Start Shopping",
+                      textStyle: TextStyles.font15WhiteBold,
+                      onPressed: () {
+                        if (pageIndex == 2) {
+                          context.pushNamedAndRemoveUntil(Routes.homeScreen,
+                              predicate: (Route<dynamic> route) => false);
+                        } else {
+                          pageController.animateToPage(pageIndex + 1,
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeInOut);
+                        }
+                      }),
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 60.h),
-              child: AppTextButton(
-                  buttonText: pageIndex != 2 ? "Next" : "Start Shopping",
-                  textStyle: TextStyles.font15WhiteBold,
-                  onPressed: () {
-                    if (pageIndex == 2) {
-                      context.pushNamedAndRemoveUntil(Routes.homeScreen,
-                          predicate: (Route<dynamic> route) => false);
-                    } else {
-                      pageController.animateToPage(pageIndex + 1,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeInOut);
-                    }
-                  }),
+            Positioned(
+              top: -10.h,
+              left: 250.w,
+              child: const OnBoardingRoudedContainer(
+                color: Color(0xffF5BD60),
+              ),
+            ),
+            Positioned(
+              top: 300.h,
+              left: -100.w,
+              child: const OnBoardingRoudedContainer(color: Color(0xff036832)),
             ),
           ],
         ));
