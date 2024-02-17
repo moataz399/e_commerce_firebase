@@ -1,4 +1,6 @@
 import 'package:e_commerce_firebase/core/routing/routes.dart';
+import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
+import 'package:e_commerce_firebase/features/auth/ui/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,12 +18,16 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
         );
-
+      case Routes.registerScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+              create: (context) => AuthCubit(), child: const RegisterScreen()),
+        );
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
                   body: Center(
-                    child: Text('NO route defined to ${settings.name}'),
+                    child: Text('No route defined to ${settings.name}'),
                   ),
                 ));
     }
