@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class OnBoardingRoudedContainer extends StatelessWidget {
-  const OnBoardingRoudedContainer({
+class OnBoardingRoundedContainer extends StatelessWidget {
+  const OnBoardingRoundedContainer({
     super.key, required this.color,
   });
   final Color color;

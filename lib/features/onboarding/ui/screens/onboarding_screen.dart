@@ -98,14 +98,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             Positioned(
               top: -10.h,
               left: 250.w,
-              child: const OnBoardingRoudedContainer(
+              child: const OnBoardingRoundedContainer(
                 color: Color(0xffF5BD60),
               ),
             ),
             Positioned(
               top: 300.h,
               left: -100.w,
-              child: const OnBoardingRoudedContainer(color: Color(0xff036832)),
+              child: const OnBoardingRoundedContainer(color: Color(0xff036832)),
             ),
           ],
         ));
