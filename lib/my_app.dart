@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp(
-          title: 'Doc App',
+          title: 'My App',
           theme: ThemeData(
               backgroundColor: Colors.white,
               primaryColor: AppColors.mainBlue,
