@@ -1,6 +1,7 @@
 import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/register_screen.dart';
+import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,12 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
+        );
+
+
+      case Routes.onBoardingScreen:
+        return MaterialPageRoute(
+          builder: (_) => const OnBoardingScreen(),
         );
       case Routes.registerScreen:
         return MaterialPageRoute(
