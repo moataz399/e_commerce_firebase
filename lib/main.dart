@@ -9,6 +9,7 @@ import 'core/routing/app_router.dart';
 
 
 Future<void> main() async {
+  
   setUpGetIt();
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
