@@ -9,7 +9,7 @@ import 'core/routing/app_router.dart';
 
 
 Future<void> main() async {
-  
+
   setUpGetIt();
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
@@ -17,6 +17,6 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-
+  // Abdo Al hady
   runApp(MyApp(appRouter: AppRouter()));
 }
