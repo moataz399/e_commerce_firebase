@@ -1,17 +1,30 @@
 class LoginRequestBody {
-  String? email;
-  String? password;
+  final String userName;
+  final String email;
+  final String password;
+  final String phoneNumber;
 
-  LoginRequestBody({this.email, this.password});
+  LoginRequestBody(
+      {required this.email,
+      required this.password,
+      required this.userName,
+      required this.phoneNumber});
 
-  factory LoginRequestBody.fromJson(Map<String, dynamic> json) =>
-      LoginRequestBody(
-        email: json["email"],
-        password: json["password"],
-      );
+  Map<String, dynamic> toMap() {
+    return {
+      'userName': userName,
+      'email': email,
+      'password': password,
+      'phoneNumber': phoneNumber,
+    };
+  }
 
-  Map<String, dynamic> toJson() => {
-        "email": email,
-        "password": password,
-      };
+  factory LoginRequestBody.fromMap(Map<String, dynamic> map) {
+    return LoginRequestBody(
+      userName: map['userName'] as String,
+      email: map['email'] as String,
+      password: map['password'] as String,
+      phoneNumber: map['phoneNumber'] as String,
+    );
+  }
 }

@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/text_styles.dart';
+
+class LogoAndHeaderText extends StatelessWidget {
+  LogoAndHeaderText({super.key, required this.title, this.emoji, this.img});
+
+  final String title;
+  String? emoji;
+  String? img;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        verticalSpace(47.h),
+        img != null
+            ? Container(
+                width: 87.w,
+                height: 33.h,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                      "assets/images/logo.png",
+                    ),
+                  ),
+                ),
+              )
+            : Container(),
+        verticalSpace(30.h),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Positioned(
+                  bottom: 5,
+                  child: Container(
+                    width: 180.w,
+                    height: 8.h,
+                    decoration: const BoxDecoration(
+                        color: AppColors.lightGreen, shape: BoxShape.rectangle),
+                  ),
+                ),
+                Text(
+                  title,
+                  style: TextStyles.font22BlackBold,
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+              child: Text(
+                emoji ?? "",
+                style: TextStyle(fontSize: 26.sp),
+              ),
+            )
+          ],
+        )
+      ],
+    );
+  }
+}
