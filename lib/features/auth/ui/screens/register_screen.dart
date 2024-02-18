@@ -173,10 +173,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     verticalSpace(30.h),
                     Center(
-                      child: AlreadyHaveAccountText(
+                      child: AuthQuestion(
                         function: () {
                           context.pushReplacementNamed(Routes.loginScreen);
                         },
+                        question: 'Already have an account? ',
+                        page: "Login",
                       ),
                     ),
                     verticalSpace(30.h),
