@@ -10,7 +10,7 @@ import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_icon_Text_button.dart';
 import '../../../../core/widgets/app_text_button.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
-import '../widgets/already_have_an account.dart';
+import '../widgets/auth_question.dart';
 import '../widgets/login_block_listener.dart';
 import '../widgets/logo_and_header_text.dart';
 

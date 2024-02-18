@@ -15,7 +15,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_text_button.dart';
-import '../widgets/already_have_an account.dart';
+import '../widgets/auth_question.dart';
 import '../widgets/register_bloc_listener.dart';
 
 class RegisterScreen extends StatefulWidget {
