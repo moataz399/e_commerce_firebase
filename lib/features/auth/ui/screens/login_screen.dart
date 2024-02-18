@@ -1,7 +1,6 @@
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
@@ -101,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   verticalSpace(32.h),
                   AppTextButton(
-                    buttonText: "Register",
+                    buttonText: "Login ",
                     textStyle: TextStyles.font15WhiteBold,
                     onPressed: () {},
                     buttonHeight: 56.h,
