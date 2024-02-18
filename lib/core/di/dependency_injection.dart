@@ -7,5 +7,5 @@ import '../network/dio_factory.dart';
 final getIt = GetIt.instance;
 
 Future<void> setUpGetIt() async {
-  getIt.registerLazySingleton<AuthCubit>(() => AuthCubit());
+  getIt.registerFactory<AuthCubit>(() => AuthCubit());
 }

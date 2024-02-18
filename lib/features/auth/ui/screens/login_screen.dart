@@ -1,5 +1,7 @@
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
+import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -9,6 +11,7 @@ import '../../../../core/widgets/app_icon_Text_button.dart';
 import '../../../../core/widgets/app_text_button.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
 import '../widgets/already_have_an account.dart';
+import '../widgets/login_block_listener.dart';
 import '../widgets/logo_and_header_text.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -86,9 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     validator: (value) {
-                      if (value == null ||
-                          value.isEmpty ||
-                          !AppRegex.isPasswordValid(value)) {
+                      if (value == null || value.isEmpty) {
                         return "please enter a valid password";
                       }
                     },
@@ -102,7 +103,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   AppTextButton(
                     buttonText: "Login ",
                     textStyle: TextStyles.font15WhiteBold,
-                    onPressed: () {},
+                    onPressed: () {
+                      validateThenDoLogin(context);
+                    },
                     buttonHeight: 56.h,
                     borderRadius: 16,
                   ),
@@ -130,6 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     img: "assets/images/facebook.png",
                     onPressed: () {},
                   ),
+                  const LoginBlocListener(),
                 ],
               ),
             ),
@@ -137,5 +141,16 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void validateThenDoLogin(BuildContext context) {
+    if (loginFormKey.currentState!.validate()) {
+      context.read<AuthCubit>().login(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          );
+
+
+    }
   }
 }

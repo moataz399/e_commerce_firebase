@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_commerce_firebase/features/auth/data/models/register_request_body.dart';
+import 'package:e_commerce_firebase/features/auth/data/models/register_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
@@ -8,11 +8,11 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
-  void register({required LoginRequestBody loginRequestBody}) async {
+  void register({required RegisterModel registerModel}) async {
     emit(RegisterLoadingState());
     try {
       var user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: loginRequestBody.email, password: loginRequestBody.password);
+          email: registerModel.email, password: registerModel.password);
 
       emit(RegisterSuccessState(user: user));
     } catch (e) {
