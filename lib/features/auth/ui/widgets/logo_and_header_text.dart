@@ -6,11 +6,19 @@ import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class LogoAndHeaderText extends StatelessWidget {
-  LogoAndHeaderText({super.key, required this.title, this.emoji, this.img});
+  LogoAndHeaderText(
+      {super.key,
+      required this.title,
+      this.emoji,
+      this.img,
+      this.width});
 
   final String title;
   String? emoji;
   String? img;
+  double? width;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +28,8 @@ class LogoAndHeaderText extends StatelessWidget {
         verticalSpace(47.h),
         img != null
             ? Container(
-                width: 87.w,
-                height: 33.h,
+                width:  87.w,
+                height:  33.h,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
@@ -41,7 +49,7 @@ class LogoAndHeaderText extends StatelessWidget {
                 Positioned(
                   bottom: 5,
                   child: Container(
-                    width: 180.w,
+                    width: width ??180.w,
                     height: 8.h,
                     decoration: const BoxDecoration(
                         color: AppColors.lightGreen, shape: BoxShape.rectangle),
