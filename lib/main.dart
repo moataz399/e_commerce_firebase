@@ -9,7 +9,7 @@ import 'core/routing/app_router.dart';
 
 
 Future<void> main() async {
-
+ //login_moataz
   setUpGetIt();
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
