@@ -12,6 +12,7 @@ import '../../../../core/widgets/app_icon_Text_button.dart';
 import '../../../../core/widgets/app_text_button.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
 import '../widgets/auth_question.dart';
+import '../widgets/google_signin_block_listener.dart';
 import '../widgets/login_block_listener.dart';
 import '../widgets/logo_and_header_text.dart';
 
@@ -125,12 +126,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       page: "Create one",
                     ),
                   ),
-                  verticalSpace(100.h),
+                  verticalSpace(70.h),
                   AppIconTextButton(
                     buttonText: "Continue with Google",
                     textStyle: TextStyles.font14BlackRegular,
                     img: "assets/images/google.png",
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<AuthCubit>().signInWithGoogle();
+                    },
                   ),
                   verticalSpace(16.h),
                   AppIconTextButton(
@@ -140,6 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {},
                   ),
                   const LoginBlocListener(),
+                  const GoogleSignInBlocListener(),
                 ],
               ),
             ),

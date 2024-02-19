@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/routing/app_router.dart';
@@ -23,7 +24,9 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: Colors.white),
           debugShowCheckedModeBanner: false,
           onGenerateRoute: appRouter.generateRoute,
-          initialRoute: Routes.loginScreen,
+          initialRoute: FirebaseAuth.instance.currentUser == null
+              ? Routes.loginScreen
+              : Routes.homeScreen,
         ));
   }
 }

@@ -48,3 +48,15 @@ class ForgotPasswordFailedState extends AuthState {
     required this.error,
   });
 }
+
+class GoogleSignInLoadingState extends AuthState {}
+
+class GoogleSignInSuccessState extends AuthState {}
+
+class GoogleSignInFailedState extends AuthState {
+  final String error;
+
+  GoogleSignInFailedState({
+    required this.error,
+  });
+}
