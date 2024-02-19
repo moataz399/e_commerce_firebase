@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/auth/ui/screens/forgot_password_screen.dart';
 import '../../features/home/ui/screens/home_screen.dart';
+import '../di/dependency_injection.dart';
 
 class AppRouter {
   AppRouter();
@@ -23,8 +25,12 @@ class AppRouter {
 
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-              create: (context) => AuthCubit(), child: const LoginScreen()),
+          builder: (_) => BlocProvider.value(
+              value: getIt<AuthCubit>(), child: const LoginScreen()),
+        );case Routes.forgotPassword:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+              value: getIt<AuthCubit>(), child: const ForgotPasswordScreen()),
         );
 
       case Routes.onBoardingScreen:
@@ -33,8 +39,10 @@ class AppRouter {
         );
       case Routes.registerScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-              create: (context) => AuthCubit(), child: const RegisterScreen()),
+          builder: (_) => BlocProvider.value(
+            value: getIt<AuthCubit>(),
+            child: const RegisterScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(

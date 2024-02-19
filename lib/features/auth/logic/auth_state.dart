@@ -36,3 +36,15 @@ class LoginFailedState extends AuthState {
     required this.error,
   });
 }
+
+class ForgotPasswordLoadingState extends AuthState {}
+
+class ForgotPasswordSuccessState extends AuthState {}
+
+class ForgotPasswordFailedState extends AuthState {
+  final String error;
+
+  ForgotPasswordFailedState({
+    required this.error,
+  });
+}
