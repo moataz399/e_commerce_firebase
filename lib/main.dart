@@ -10,6 +10,7 @@ import 'core/routing/app_router.dart';
 
 Future<void> main() async {
  // test
+ // test shared pref
   WidgetsFlutterBinding.ensureInitialized();
   setUpGetIt();
   CacheHelper.cacheInit();
