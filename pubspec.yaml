@@ -29,6 +29,7 @@ dependencies:
   firebase_messaging: ^14.7.15
   firebase_auth: ^4.17.4
   font_awesome_flutter: ^10.7.0
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:

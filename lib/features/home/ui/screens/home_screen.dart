@@ -4,6 +4,7 @@ import 'package:e_commerce_firebase/core/widgets/app_text_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/routing/routes.dart';
 
@@ -26,6 +27,8 @@ class HomeScreen extends StatelessWidget {
                 textStyle: TextStyles.font15WhiteBold,
                 onPressed: () async {
                   await FirebaseAuth.instance.signOut();
+                  GoogleSignIn googleUser = GoogleSignIn();
+                  await googleUser.disconnect();
                   context.pushReplacementNamed(Routes.loginScreen);
                 })
           ],

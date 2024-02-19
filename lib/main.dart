@@ -9,8 +9,7 @@ import 'core/helpers/bloc_observer.dart';
 import 'core/routing/app_router.dart';
 
 Future<void> main() async {
- // test
- // test shared pref 2
+ // test from moataz to abdo
   WidgetsFlutterBinding.ensureInitialized();
   setUpGetIt();
   CacheHelper.cacheInit();
