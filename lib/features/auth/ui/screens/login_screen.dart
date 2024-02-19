@@ -1,5 +1,6 @@
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,9 +40,9 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 30.h),
             child: Form(
               key: loginFormKey,
               child: Column(
@@ -95,9 +96,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                   verticalSpace(16.h),
-                  Text(
-                    "Forgot password ?",
-                    style: TextStyles.font12BlackRegular,
+                  InkWell(
+                    onTap: (){
+                      context.pushNamed(Routes.forgotPassword);
+                    },
+                      child: Text(
+                      "Forgot password ?",
+                      style: TextStyles.font12BlackRegular,
+                    ),
                   ),
                   verticalSpace(32.h),
                   AppTextButton(
@@ -119,14 +125,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       page: "Create one",
                     ),
                   ),
-                  verticalSpace(30.h),
+                  verticalSpace(100.h),
                   AppIconTextButton(
                     buttonText: "Continue with Google",
                     textStyle: TextStyles.font14BlackRegular,
                     img: "assets/images/google.png",
                     onPressed: () {},
                   ),
-                  verticalSpace(30.h),
+                  verticalSpace(16.h),
                   AppIconTextButton(
                     buttonText: "Continue with Facebook",
                     textStyle: TextStyles.font14BlackRegular,
