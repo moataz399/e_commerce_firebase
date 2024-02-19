@@ -9,7 +9,6 @@ import 'core/helpers/bloc_observer.dart';
 import 'core/routing/app_router.dart';
 
 Future<void> main() async {
- // test from moataz to abdo
   WidgetsFlutterBinding.ensureInitialized();
   setUpGetIt();
   CacheHelper.cacheInit();

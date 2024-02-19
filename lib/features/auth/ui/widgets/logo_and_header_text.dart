@@ -25,7 +25,7 @@ class LogoAndHeaderText extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        verticalSpace(47.h),
+        verticalSpace(30.h),
         img != null
             ? Container(
                 width:  87.w,
