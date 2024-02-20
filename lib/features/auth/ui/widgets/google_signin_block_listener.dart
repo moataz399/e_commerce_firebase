@@ -16,6 +16,7 @@ class GoogleSignInBlocListener extends StatelessWidget {
       listenWhen: (previous, current) =>
           current is GoogleSignInLoadingState ||
           current is GoogleSignInSuccessState ||
+          current is GoogleSignInDismissState ||
           current is GoogleSignInFailedState,
       listener: (context, state) {
         if (state is GoogleSignInLoadingState) {
