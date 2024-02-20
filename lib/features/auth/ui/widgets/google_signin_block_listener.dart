@@ -1,4 +1,3 @@
-
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +14,9 @@ class GoogleSignInBlocListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listenWhen: (previous, current) =>
-      current is GoogleSignInLoadingState ||
+          current is GoogleSignInLoadingState ||
           current is GoogleSignInSuccessState ||
+          current is GoogleSignInDismissState ||
           current is GoogleSignInFailedState,
       listener: (context, state) {
         if (state is GoogleSignInLoadingState) {
@@ -31,6 +31,8 @@ class GoogleSignInBlocListener extends StatelessWidget {
         } else if (state is GoogleSignInSuccessState) {
           context.pop();
           context.pushReplacementNamed(Routes.homeScreen);
+        } else if (state is GoogleSignInDismissState) {
+          context.pop();
         } else if (state is GoogleSignInFailedState) {
           context.pop();
           showDialog(
