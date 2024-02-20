@@ -1,41 +1,45 @@
-import 'package:e_commerce_firebase/core/helpers/extensions.dart';
-import 'package:e_commerce_firebase/core/theming/text_styles.dart';
-import 'package:e_commerce_firebase/core/widgets/app_text_button.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:e_commerce_firebase/core/helpers/spacing.dart';
+import 'package:e_commerce_firebase/core/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-
-import '../../../../core/routing/routes.dart';
+import '../widgets/banner_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    GoogleSignIn googleUser = GoogleSignIn();
+    //GoogleSignIn googleUser = GoogleSignIn();
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.w),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
         child: Column(
           children: [
-            Center(
-              child: Text("Home screen"),
+            AppTextFormField(
+              hintText: "Search for product..",
+              validator: (value) {},
+              prefixIcon: const Icon(
+                Icons.search_outlined,
+                size: 20,
+              ),
             ),
-            AppTextButton(
-                buttonText: "logout",
-                textStyle: TextStyles.font15WhiteBold,
-                onPressed: () async {
-                  if (await googleUser.isSignedIn()) {
-                    await googleUser.disconnect();
-                  }
-                  await FirebaseAuth.instance.signOut();
-                  context.pushReplacementNamed(Routes.loginScreen);
-                })
+            verticalSpace(16.h),
+            const BannersSlider(),
           ],
         ),
       )),
     );
   }
 }
+
+// AppTextButton(
+//     buttonText: "logout",
+//     textStyle: TextStyles.font15WhiteBold,
+//     onPressed: () async {
+//       if (await googleUser.isSignedIn()) {
+//         await googleUser.disconnect();
+//       }
+//       await FirebaseAuth.instance.signOut();
+//       context.pushReplacementNamed(Routes.loginScreen);
+//     }),
