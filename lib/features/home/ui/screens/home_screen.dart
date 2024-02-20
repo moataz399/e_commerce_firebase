@@ -13,6 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GoogleSignIn googleUser = GoogleSignIn();
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -26,9 +27,10 @@ class HomeScreen extends StatelessWidget {
                 buttonText: "logout",
                 textStyle: TextStyles.font15WhiteBold,
                 onPressed: () async {
+                  if (await googleUser.isSignedIn()) {
+                    await googleUser.disconnect();
+                  }
                   await FirebaseAuth.instance.signOut();
-                  GoogleSignIn googleUser = GoogleSignIn();
-                  await googleUser.disconnect();
                   context.pushReplacementNamed(Routes.loginScreen);
                 })
           ],
