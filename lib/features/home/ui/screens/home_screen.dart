@@ -7,7 +7,7 @@ import '../widgets/banner_widget.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     //GoogleSignIn googleUser = GoogleSignIn();
     return Scaffold(
