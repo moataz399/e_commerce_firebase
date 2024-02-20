@@ -1,5 +1,6 @@
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
+import 'package:e_commerce_firebase/features/auth/logic/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theming/colors.dart';

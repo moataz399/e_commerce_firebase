@@ -1,3 +1,4 @@
+import 'package:e_commerce_firebase/core/helpers/app_loaders.dart';
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/text_styles.dart';
+import '../../logic/auth_state.dart';
 
 class RegisterBlocListener extends StatelessWidget {
   const RegisterBlocListener({super.key});
@@ -29,34 +30,12 @@ class RegisterBlocListener extends StatelessWidget {
           );
         } else if (state is RegisterSuccessState) {
           context.pop();
-          context.pushReplacementNamed(Routes.homeScreen);
+          context.pushReplacementNamed(Routes.loginScreen);
+          AppLoaders.successSnackBar(
+              context, 'Cogratulation', 'Email is Created Successfuly.');
         } else if (state is RegisterFailedState) {
           context.pop();
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              icon: const Icon(
-                Icons.error,
-                color: Colors.red,
-                size: 32,
-              ),
-              content: Text(
-                state.error.toString(),
-                style: TextStyles.font15DarkBlueMedium,
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    context.pop();
-                  },
-                  child: Text(
-                    'Got it',
-                    style: TextStyles.font14BlueSemiBold,
-                  ),
-                ),
-              ],
-            ),
-          );
+          AppLoaders.errorSnackBar(context, state.error);
         }
       },
       child: const SizedBox.shrink(),

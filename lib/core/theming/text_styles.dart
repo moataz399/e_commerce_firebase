@@ -161,4 +161,12 @@ class TextStyles {
     fontWeight: FontWeightHelper.semiBold,
     color: AppColors.mainBlue,
   );
+  static TextStyle font15WhiteMeduim = TextStyle(
+      fontSize: 15.sp,
+      fontWeight: FontWeightHelper.medium,
+      color: Colors.white);
+  static TextStyle font15WhiteSemiBold = TextStyle(
+      fontSize: 15.sp,
+      fontWeight: FontWeightHelper.semiBold,
+      color: Colors.white);
 }

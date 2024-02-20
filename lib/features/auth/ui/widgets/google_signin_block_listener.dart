@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/text_styles.dart';
+import '../../logic/auth_state.dart';
 
 class GoogleSignInBlocListener extends StatelessWidget {
   const GoogleSignInBlocListener({super.key});

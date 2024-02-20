@@ -1,36 +1,48 @@
-import 'package:bloc/bloc.dart';
-import 'package:e_commerce_firebase/features/auth/data/models/register_model.dart';
+import 'package:e_commerce_firebase/features/auth/data/models/user_model.dart';
+import 'package:e_commerce_firebase/features/auth/data/repo/auth_repo.dart';
+import 'package:e_commerce_firebase/features/auth/logic/auth_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:meta/meta.dart';
-
-part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthInitial());
+  AuthCubit(this._authRepo) : super(AuthInitial());
+  final AuthRepo _authRepo;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
+  TextEditingController passwordConfirmationController =
+      TextEditingController();
+  GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
-  void register({required RegisterModel registerModel}) async {
+  void registerWithEmailAndPassword() async {
     emit(RegisterLoadingState());
     try {
-      var user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: registerModel.email, password: registerModel.password);
+      var user = await _authRepo.registerWithEmailAndPassword(
+          emailController.text, passwordController.text);
+      await _authRepo.saveUserDataInFireStore(UserModel(
+          email: emailController.text.trim(),
+          userName: userNameController.text.trim(),
+          userId: user.user!.uid,
+          phoneNubmer: phoneNumberController.text.trim(),
+          profilePicture: ''));
 
-      emit(RegisterSuccessState(user: user));
+      emit(RegisterSuccessState());
     } catch (e) {
-      print(e.toString());
       emit(RegisterFailedState(error: e.toString()));
     }
   }
 
-  void login({required String email, required String password}) async {
+  void loginWithEmailAndPassword() async {
     emit(LoginLoadingState());
     try {
-      var user = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-
-      emit(LoginSuccessState(user: user));
+      await _authRepo.loginWithEmailAndPassword(
+          emailController.text, passwordController.text);
+      emit(LoginSuccessState());
     } catch (e) {
-      print(e.toString());
       emit(LoginFailedState(error: e.toString()));
     }
   }
