@@ -50,6 +50,7 @@ class ForgotPasswordFailedState extends AuthState {
 }
 
 class GoogleSignInLoadingState extends AuthState {}
+class GoogleSignInDismissState extends AuthState {}
 
 class GoogleSignInSuccessState extends AuthState {}
 
