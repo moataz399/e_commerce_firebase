@@ -1,12 +1,8 @@
 
-
-
-  import 'package:e_commerce_firebase/features/auth/data/models/user_model.dart';
+import 'package:e_commerce_firebase/features/auth/data/models/user_model.dart';
 import 'package:e_commerce_firebase/features/auth/data/repo/auth_repo.dart';
 import 'package:e_commerce_firebase/features/auth/logic/auth_state.dart';
-  import 'package:bloc/bloc.dart';
-import 'package:e_commerce_firebase/core/helpers/extensions.dart';
-import 'package:e_commerce_firebase/features/auth/data/models/register_model.dart';
+import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,7 +58,7 @@ class AuthCubit extends Cubit<AuthState> {
       print(e.toString());
       emit(
         ForgotPasswordFailedState(
-          error: e.message.toString(),
+          error: e.message!.toString(),
         ),
       );
     }

@@ -16,7 +16,5 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  // Abdo Al hady
   runApp(MyApp(appRouter: AppRouter()));
 }
