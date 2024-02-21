@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 class SmallText extends StatelessWidget {
   final String text;
-  Color? color;
-  double size;
-  double height;
-  SmallText(
+  final Color? color;
+  final double size;
+  final double height;
+  const SmallText(
       {super.key,
         required this.text,
         this.height=1.2,

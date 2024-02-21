@@ -4,6 +4,8 @@ import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/login_screen.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/register_screen.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/verify_email/verify_email_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/screens/category_details_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/screens/caterories_screen.dart';
 import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +25,14 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
+        );
+      case Routes.categoryDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CategoryDetailsScreen(),
+        );
+      case Routes.categoriesScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CategoriesScreen(),
         );
 
       case Routes.loginScreen:
