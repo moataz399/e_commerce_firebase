@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class AuthQuestion extends StatelessWidget {
-   AuthQuestion({super.key,required this.function,required this.question,required this.page});
+   const AuthQuestion({super.key,required this.function,required this.question,required this.page});
 
    final String question ;
    final String page;
- void Function() function;
+   final void Function() function;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

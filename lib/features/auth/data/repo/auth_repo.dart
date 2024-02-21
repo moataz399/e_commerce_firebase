@@ -2,6 +2,7 @@ import 'package:e_commerce_firebase/core/services/firebase_firestore_services.da
 import 'package:e_commerce_firebase/features/auth/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/exceptions/firebase_auth_exceptions.dart';
 import '../../../../core/exceptions/firebase_exceptions.dart';
@@ -50,7 +51,38 @@ class AuthRepo {
       await FireStoreServices().addUserToFireStore(userModel);
     } on FormatException {
       throw const AppFormatException().message;
-    }on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong, please try agin later';
+    }
+  }
+
+  //! Send  email verification to verify accout
+
+  Future<void> sendEmailVerification() async {
+    try {
+      await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      throw AppFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong, please try agin later';
+    }
+  }
+  //! user logout
+    Future<void> logOut() async {
+    try {
+      await GoogleSignIn().signOut();
+      await FirebaseAuth.instance.signOut();
+    } on FirebaseAuthException catch (e) {
+      throw AppFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;

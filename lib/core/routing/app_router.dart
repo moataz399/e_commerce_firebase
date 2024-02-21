@@ -1,7 +1,9 @@
 import 'package:e_commerce_firebase/core/routing/routes.dart';
+import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
 import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/login_screen.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/register_screen.dart';
+import 'package:e_commerce_firebase/features/auth/ui/screens/verify_email/verify_email_screen.dart';
 import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -27,15 +29,24 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
               value: getIt<AuthCubit>(), child: const LoginScreen()),
-        );case Routes.forgotPassword:
+        );
+      case Routes.forgotPassword:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
               value: getIt<AuthCubit>(), child: const ForgotPasswordScreen()),
         );
-
+      case Routes.verifyEmailScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+              value: getIt<AuthCubit>(), child: const VerifyEmailScreen()),
+        );
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
           builder: (_) => const OnBoardingScreen(),
+        );
+         case Routes.successScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SuccessScreen(),
         );
       case Routes.registerScreen:
         return MaterialPageRoute(

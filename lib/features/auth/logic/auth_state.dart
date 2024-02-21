@@ -50,3 +50,29 @@ class GoogleSignInFailedState extends AuthState {
     required this.error,
   });
 }
+
+
+class SendEmailVerificationLoadingState extends AuthState {}
+
+class SendEmailVerificationSuccessState extends AuthState {}
+
+class SendEmailVerificationFailedState extends AuthState {
+  final String error;
+
+  SendEmailVerificationFailedState({
+    required this.error,
+  });
+}
+class SuccessVerifyAccountState extends AuthState {}
+
+
+class LogOutLoadingState extends AuthState {}
+
+class LogOutSuccessState extends AuthState {}
+class LogOutFailedState extends AuthState {
+  final String error;
+
+  LogOutFailedState({
+    required this.error,
+  });
+}
