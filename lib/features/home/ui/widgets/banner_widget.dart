@@ -17,7 +17,6 @@ class _BannersSliderState extends State<BannersSlider> {
     "assets/images/banner.png",
     "assets/images/banner.png",
     "assets/images/banner.png",
-
   ];
   int pageIndex = 0;
 

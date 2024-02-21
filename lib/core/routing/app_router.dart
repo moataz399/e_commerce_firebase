@@ -2,6 +2,8 @@ import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/login_screen.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/register_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/screens/category_details_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/screens/caterories_screen.dart';
 import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,12 +24,21 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
         );
+      case Routes.categoryDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CategoryDetailsScreen(),
+        );
+      case Routes.categoriesScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CategoriesScreen(),
+        );
 
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
               value: getIt<AuthCubit>(), child: const LoginScreen()),
-        );case Routes.forgotPassword:
+        );
+      case Routes.forgotPassword:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
               value: getIt<AuthCubit>(), child: const ForgotPasswordScreen()),
