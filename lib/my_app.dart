@@ -23,9 +23,11 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: Colors.white),
           debugShowCheckedModeBanner: false,
           onGenerateRoute: appRouter.generateRoute,
-          initialRoute: FirebaseAuth.instance.currentUser == null
+           initialRoute:
+          FirebaseAuth.instance.currentUser == null
               ? Routes.loginScreen
               : Routes.homeScreen,
-        ));
+        ),
+    );
   }
 }
