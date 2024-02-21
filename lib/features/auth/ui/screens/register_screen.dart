@@ -26,7 +26,7 @@ class RegisterScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                LogoAndHeaderText(
+                const LogoAndHeaderText(
                   title: "Create an account",
                   emoji: "🎉",
                   img: "assets/images/logo.png",
