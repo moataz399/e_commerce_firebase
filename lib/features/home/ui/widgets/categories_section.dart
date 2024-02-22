@@ -9,7 +9,7 @@ class CategoriesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 91.h,
+      height: 92.h,
       child: ListView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),

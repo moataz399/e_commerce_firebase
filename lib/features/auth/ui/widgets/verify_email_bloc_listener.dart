@@ -37,7 +37,7 @@ class VerifyEemailBlocListener extends StatelessWidget {
                     title: AppStrings.yourAccountCreatedTitle,
                     subTitle: AppStrings.yourAccountCreatedSubTitle,
                     onPerssed: () => context.pushNamedAndRemoveUntil(
-                        Routes.loginScreen,
+                        Routes.homeScreen,
                         predicate: (route) => false),
                     image: AppImages.successfullyRegisterAnimation),
               ),

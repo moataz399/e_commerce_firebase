@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'core/functions/controller_initial_page.dart';
 import 'core/routing/app_router.dart';
-import 'core/routing/routes.dart';
 import 'core/theming/colors.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,22 +12,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(375, 812),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        child: MaterialApp(
-          title: 'My App',
-          theme: ThemeData(
-              appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
-              primaryColor: AppColors.mainBlue,
-              scaffoldBackgroundColor: Colors.white),
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: appRouter.generateRoute,
-           initialRoute:
-          FirebaseAuth.instance.currentUser == null
-              ? Routes.loginScreen
-              : Routes.homeScreen,
-        ),
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp(
+        title: 'My App',
+        theme: ThemeData(
+            appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
+            primaryColor: AppColors.mainBlue,
+            scaffoldBackgroundColor: Colors.white),
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: appRouter.generateRoute,
+        initialRoute: controlleInitialPage(context)
+          // FirebaseAuth.instance.currentUser == null
+          //     ? Routes.loginScreen
+          //     : Routes.homeScreen,
+      ),
     );
   }
 }

@@ -4,9 +4,9 @@ class AppStrings {
   static const String congratulation = 'Congratulation';
   static const String appContinue = "Continue";
 
-  static const String emailSent =  'Email Sent';
-  static const String emailSentSuccess =  'Please Check your inbox and verify your email.';
-
+  static const String emailSent = 'Email Sent';
+  static const String emailSentSuccess =
+      'Please Check your inbox and verify your email.';
 
   static const String confirmEmail = "Verify your email address!";
   static const String resendEmail = "Resend Email";
@@ -16,4 +16,6 @@ class AppStrings {
       "Your account successfully created!";
   static const String yourAccountCreatedSubTitle =
       "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
+
+  static const String onBoardingKey = 'onBoardingKey';
 }

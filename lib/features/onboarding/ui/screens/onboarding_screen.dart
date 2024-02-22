@@ -1,6 +1,9 @@
+import 'package:e_commerce_firebase/core/di/dependency_injection.dart';
+import 'package:e_commerce_firebase/core/helpers/cache_helper.dart';
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
+import 'package:e_commerce_firebase/core/utils/app_strings.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -84,7 +87,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       textStyle: TextStyles.font15WhiteBold,
                       onPressed: () {
                         if (pageIndex == 2) {
-                          context.pushNamedAndRemoveUntil(Routes.homeScreen,
+                          getIt<CacheHelper>().saveData(
+                              key: AppStrings.onBoardingKey, value: true);
+                          context.pushNamedAndRemoveUntil(Routes.loginScreen,
                               predicate: (Route<dynamic> route) => false);
                         } else {
                           pageController.animateToPage(pageIndex + 1,

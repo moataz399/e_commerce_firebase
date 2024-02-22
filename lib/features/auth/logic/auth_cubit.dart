@@ -19,6 +19,7 @@ class AuthCubit extends Cubit<AuthState> {
   GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
+
   void registerWithEmailAndPassword() async {
     emit(RegisterLoadingState());
     try {
@@ -93,7 +94,6 @@ class AuthCubit extends Cubit<AuthState> {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       emit(ForgotPasswordSuccessState());
     } on FirebaseAuthException catch (e) {
-      print(e.toString());
       emit(
         ForgotPasswordFailedState(
           error: e.message!.toString(),
@@ -126,7 +126,6 @@ class AuthCubit extends Cubit<AuthState> {
       await FirebaseAuth.instance.signInWithCredential(credential);
       emit(GoogleSignInSuccessState());
     } catch (e) {
-      print(e.toString());
       emit(
         GoogleSignInFailedState(
           error: e.toString(),
