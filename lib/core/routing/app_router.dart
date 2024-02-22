@@ -20,7 +20,6 @@ class AppRouter {
 
   Route? generateRoute(RouteSettings settings) {
     final arguments = settings.arguments;
-
     switch (settings.name) {
       case Routes.homeScreen:
         return MaterialPageRoute(
@@ -34,7 +33,6 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const CategoriesScreen(),
         );
-
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
@@ -54,7 +52,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const OnBoardingScreen(),
         );
-         case Routes.successScreen:
+      case Routes.successScreen:
         return MaterialPageRoute(
           builder: (_) => const SuccessScreen(),
         );

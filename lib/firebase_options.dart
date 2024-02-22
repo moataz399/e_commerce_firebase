@@ -67,6 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '942826855435',
     projectId: 'e-commerce-2643a',
     storageBucket: 'e-commerce-2643a.appspot.com',
+    androidClientId: '942826855435-f43l2o188m7no8rdmbtbfec39520b1dv.apps.googleusercontent.com',
+    iosClientId: '942826855435-f9vi8f9dlprj8ij0h7ccucuej2pn2bjr.apps.googleusercontent.com',
     iosBundleId: 'com.example.eCommerceFirebase',
   );
 
@@ -76,6 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '942826855435',
     projectId: 'e-commerce-2643a',
     storageBucket: 'e-commerce-2643a.appspot.com',
+    androidClientId: '942826855435-f43l2o188m7no8rdmbtbfec39520b1dv.apps.googleusercontent.com',
+    iosClientId: '942826855435-3ce4drfcq3gobrq0bvdhdsj42muru361.apps.googleusercontent.com',
     iosBundleId: 'com.example.eCommerceFirebase.RunnerTests',
   );
 }

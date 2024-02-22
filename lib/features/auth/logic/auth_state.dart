@@ -39,6 +39,7 @@ class ForgotPasswordFailedState extends AuthState {
 }
 
 class GoogleSignInLoadingState extends AuthState {}
+
 class GoogleSignInDismissState extends AuthState {}
 
 class GoogleSignInSuccessState extends AuthState {}
@@ -51,7 +52,6 @@ class GoogleSignInFailedState extends AuthState {
   });
 }
 
-
 class SendEmailVerificationLoadingState extends AuthState {}
 
 class SendEmailVerificationSuccessState extends AuthState {}
@@ -63,12 +63,13 @@ class SendEmailVerificationFailedState extends AuthState {
     required this.error,
   });
 }
-class SuccessVerifyAccountState extends AuthState {}
 
+class SuccessVerifyAccountState extends AuthState {}
 
 class LogOutLoadingState extends AuthState {}
 
 class LogOutSuccessState extends AuthState {}
+
 class LogOutFailedState extends AuthState {
   final String error;
 
@@ -76,3 +77,5 @@ class LogOutFailedState extends AuthState {
     required this.error,
   });
 }
+
+

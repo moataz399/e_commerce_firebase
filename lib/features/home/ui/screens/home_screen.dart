@@ -40,13 +40,4 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-// AppTextButton(
-//     buttonText: "logout",
-//     textStyle: TextStyles.font15WhiteBold,
-//     onPressed: () async {
-//       if (await googleUser.isSignedIn()) {
-//         await googleUser.disconnect();
-//       }
-//       await FirebaseAuth.instance.signOut();
-//       context.pushReplacementNamed(Routes.loginScreen);
-//     }),
+
