@@ -7,7 +7,7 @@ import '../../features/auth/data/repo/auth_repo.dart';
 final getIt = GetIt.instance;
 
 Future<void> setUpGetIt() async {
-  //! Shared Preferences
+  // Shared Preferences
   getIt.registerLazySingleton<CacheHelper>(() => CacheHelper());
   //! Auth Cubit & Auth Repo
   getIt.registerLazySingleton<AuthRepo>(() => AuthRepo());

@@ -59,7 +59,7 @@ class ForgotPasswordBlocListener extends StatelessWidget {
                   },
                   child: Text(
                     'Got it',
-                    style: TextStyles.font14BlueSemiBold,
+                    style: TextStyles.font14GreenSemiBold,
                   ),
                 ),
               ],

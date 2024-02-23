@@ -34,7 +34,7 @@ class AuthCubit extends Cubit<AuthState> {
           email: emailController.text.trim(),
           userName: userNameController.text.trim(),
           userId: user.user!.uid,
-          phoneNubmer: phoneNumberController.text.trim(),
+          phoneNumber: phoneNumberController.text.trim(),
           profilePicture: ''));
 
       emit(RegisterSuccessState());
@@ -75,7 +75,7 @@ class AuthCubit extends Cubit<AuthState> {
     });
   }
 
-  /// Manualy Check if email Verified
+  /// Manually Check if email Verified
   checkEmailVerificationStatus() async {
     final currentUSer = FirebaseAuth.instance.currentUser;
     if (currentUSer != null && currentUSer.emailVerified) {

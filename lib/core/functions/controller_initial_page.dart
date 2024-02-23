@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-String? controlleInitialPage(BuildContext context) {
+String? controllerInitialPage(BuildContext context) {
    FlutterNativeSplash.remove();
   final user = FirebaseAuth.instance.currentUser;
   if (user != null) {

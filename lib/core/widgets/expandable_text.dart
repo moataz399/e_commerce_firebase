@@ -68,7 +68,7 @@ class _ExpandableTextState extends State<ExpandableText> {
                       children: [
                         SmallText(
                           text: hiddenText ? 'Show more' : 'Show less',
-                          color: AppColors.mainBlue,
+                          color: AppColors.mainGreen,
                         ),
                         SizedBox(
                           height: 10.h,
@@ -76,12 +76,12 @@ class _ExpandableTextState extends State<ExpandableText> {
                         hiddenText
                             ? const Icon(
                                 Icons.arrow_drop_down,
-                                color: AppColors.mainBlue,
+                                color: AppColors.mainGreen,
                                 size: 16,
                               )
                             : const Icon(
                                 Icons.arrow_drop_up,
-                                color: AppColors.mainBlue,
+                                color: AppColors.mainGreen,
                                 size: 16,
                               ),
                       ],

@@ -19,14 +19,11 @@ class MyApp extends StatelessWidget {
         title: 'My App',
         theme: ThemeData(
             appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
-            primaryColor: AppColors.mainBlue,
+            primaryColor: AppColors.mainGreen,
             scaffoldBackgroundColor: Colors.white),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: appRouter.generateRoute,
-        initialRoute: controlleInitialPage(context)
-          // FirebaseAuth.instance.currentUser == null
-          //     ? Routes.loginScreen
-          //     : Routes.homeScreen,
+        initialRoute: controllerInitialPage(context)
       ),
     );
   }

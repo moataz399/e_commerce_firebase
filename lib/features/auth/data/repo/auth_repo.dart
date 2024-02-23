@@ -24,7 +24,7 @@ class AuthRepo {
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, please try agin later';
+      throw 'Something went wrong, please try again later';
     }
   }
 
@@ -41,7 +41,7 @@ class AuthRepo {
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, please try agin later';
+      throw 'Something went wrong, please try again later';
     }
   }
 
@@ -56,11 +56,11 @@ class AuthRepo {
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, please try agin later';
+      throw 'Something went wrong, please try again later';
     }
   }
 
-  //! Send  email verification to verify accout
+  //! Send  email verification to verify account
 
   Future<void> sendEmailVerification() async {
     try {
@@ -72,7 +72,7 @@ class AuthRepo {
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, please try agin later';
+      throw 'Something went wrong, please try again later';
     }
   }
   //! user logout
@@ -87,7 +87,7 @@ class AuthRepo {
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;
     } catch (e) {
-      throw 'Something went wrong, please try agin later';
+      throw 'Something went wrong, please try again later';
     }
   }
 }

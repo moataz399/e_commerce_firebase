@@ -10,8 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/app_images.dart';
 
-class VerifyEemailBlocListener extends StatelessWidget {
-  const VerifyEemailBlocListener({super.key});
+class VerifyEmailBlocListener extends StatelessWidget {
+  const VerifyEmailBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class VerifyEemailBlocListener extends StatelessWidget {
                 builder: (context) => SuccessScreen(
                     title: AppStrings.yourAccountCreatedTitle,
                     subTitle: AppStrings.yourAccountCreatedSubTitle,
-                    onPerssed: () => context.pushNamedAndRemoveUntil(
+                    onPressed: () => context.pushNamedAndRemoveUntil(
                         Routes.homeScreen,
                         predicate: (route) => false),
                     image: AppImages.successfullyRegisterAnimation),

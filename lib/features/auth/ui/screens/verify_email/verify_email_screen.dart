@@ -80,7 +80,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 onPressed: () =>
                     context.read<AuthCubit>().sendEmailVerification(),
               ),
-              const VerifyEemailBlocListener()
+              const VerifyEmailBlocListener()
             ],
           ),
         ),
