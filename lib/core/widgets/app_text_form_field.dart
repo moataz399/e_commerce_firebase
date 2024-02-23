@@ -39,14 +39,15 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? 50.h,
+      height: height ?? 80.h, // error
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
-          prefixIcon: prefixIcon,
           isDense: true,
+          prefixIcon: prefixIcon,
+          isCollapsed: true,
           contentPadding: contentPadding ??
-              EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+              EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           focusedBorder: focusedBorder ??
               OutlineInputBorder(
                 borderSide: const BorderSide(

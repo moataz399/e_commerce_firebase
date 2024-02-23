@@ -2,31 +2,16 @@ import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_button.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_form_field.dart';
-import 'package:e_commerce_firebase/features/auth/ui/widgets/logo_and_header_text.dart';
+import 'package:e_commerce_firebase/core/widgets/logo_and_header_text.dart';
+import 'package:e_commerce_firebase/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/helpers/app_regex.dart';
+import 'widgets/forgot_password_bloc_listener.dart';
 
-import '../../../../core/helpers/app_regex.dart';
-import '../../logic/auth_cubit.dart';
-import '../widgets/forgot_password_bloc_listener.dart';
-
-class ForgotPasswordScreen extends StatefulWidget {
+class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
-
-  @override
-  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
-}
-
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
-  TextEditingController emailController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    super.dispose();
-    emailController.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +23,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 100.h),
           child: Form(
-            key: formKey,
+            key: context.read<LoginCubit>().forgetPasswordFormKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -55,7 +40,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 verticalSpace(24.h),
                 AppTextFormField(
                   hintText: "Email",
-                  controller: emailController,
+                  controller: context.read<LoginCubit>().email,
                   validator: (value) {
                     if (value == null ||
                         value.isEmpty ||
@@ -84,10 +69,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   void validateThenSendPasswordResetEmail(BuildContext context) {
-    if (formKey.currentState!.validate()) {
-      context.read<AuthCubit>().sendPasswordResetEmail(
-            email: emailController.text.trim(),
-          );
+    if (context
+        .read<LoginCubit>()
+        .forgetPasswordFormKey
+        .currentState!
+        .validate()) {
+      context.read<LoginCubit>().sendEmailResetPasswrd();
     }
   }
 }
