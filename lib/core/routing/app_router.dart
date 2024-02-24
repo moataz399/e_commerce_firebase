@@ -1,10 +1,10 @@
 import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
-import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
+import 'package:e_commerce_firebase/features/register/logic/register_cubit.dart';
 import 'package:e_commerce_firebase/features/login/logic/cubit/login_cubit.dart';
 import 'package:e_commerce_firebase/features/login/ui/login_screen.dart';
-import 'package:e_commerce_firebase/features/auth/ui/screens/register_screen.dart';
-import 'package:e_commerce_firebase/features/auth/ui/screens/verify_email_screen.dart';
+import 'package:e_commerce_firebase/features/register/ui/screens/register_screen.dart';
+import 'package:e_commerce_firebase/features/register/ui/screens/verify_email_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/category_details_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/caterories_screen.dart';
 import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_screen.dart';
@@ -44,10 +44,17 @@ class AppRouter {
           builder: (_) => BlocProvider.value(
               value: getIt<LoginCubit>(), child: const ForgotPasswordScreen()),
         );
+      case Routes.registerScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: getIt<RegisterCubit>(),
+            child: const RegisterScreen(),
+          ),
+        );
       case Routes.verifyEmailScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-              value: getIt<AuthCubit>(), child: const VerifyEmailScreen()),
+              value: getIt<RegisterCubit>(), child: const VerifyEmailScreen()),
         );
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
@@ -57,13 +64,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const SuccessScreen(),
         );
-      case Routes.registerScreen:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: getIt<AuthCubit>(),
-            child: const RegisterScreen(),
-          ),
-        );
+
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

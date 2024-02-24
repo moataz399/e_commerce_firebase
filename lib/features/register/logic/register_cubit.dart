@@ -1,15 +1,15 @@
 import 'dart:async';
-import 'package:e_commerce_firebase/features/auth/data/models/user_model.dart';
-import 'package:e_commerce_firebase/features/auth/data/repo/auth_repo.dart';
-import 'package:e_commerce_firebase/features/auth/logic/auth_state.dart';
+import 'package:e_commerce_firebase/features/register/data/models/user_model.dart';
+import 'package:e_commerce_firebase/features/register/data/repo/register_repo.dart';
+import 'package:e_commerce_firebase/features/register/logic/register_states.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(this._authRepo) : super(AuthInitial());
-  final AuthRepo _authRepo;
+class RegisterCubit extends Cubit<RegisterState> {
+  RegisterCubit(this._authRepo) : super(AuthInitial());
+  final RegisterRepo _authRepo;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
@@ -66,6 +66,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+ /// user logout
   void logOut() async {
     emit(LogOutLoadingState());
     try {
