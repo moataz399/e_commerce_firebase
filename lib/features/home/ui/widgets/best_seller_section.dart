@@ -6,8 +6,8 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
 
-class ProductsSection extends StatelessWidget {
-  const ProductsSection({super.key});
+class BestSellerSection extends StatelessWidget {
+  const BestSellerSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class ProductsSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Products",
+              "Best Seller",
               style: TextStyles.font16BlackBoldSemiBold,
             ),
             TextButton(
@@ -43,7 +43,7 @@ class ProductsSection extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w),
-                  child: ProductListItem(),
+                  child: const ProductListItem(),
                 );
               }),
         ),
