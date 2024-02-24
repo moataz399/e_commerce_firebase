@@ -59,9 +59,6 @@ class _LoginFormState extends State<LoginForm> {
               if (value == null || value.isEmpty) {
                 return "please enter a valid password";
               }
-               else if (AppRegex.hasMinLength(value)) {
-                return 'password must be at least 8 character';
-              }
             },
           ),
         ],

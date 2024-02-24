@@ -1,6 +1,7 @@
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/features/login/logic/cubit/login_cubit.dart';
 import 'package:e_commerce_firebase/features/login/ui/widgets/login_form.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,21 +66,17 @@ class LoginScreen extends StatelessWidget {
                     page: "Create one",
                   ),
                 ),
-                verticalSpace(100.h),
-                AppIconTextButton(
-                  buttonText: "Continue with Google",
-                  textStyle: TextStyles.font14BlackRegular,
-                  img: "assets/images/google.png",
-                  onPressed: () {
-                    context.read<LoginCubit>().signInWithGoogle();
-                  },
-                ),
-                verticalSpace(16.h),
-                AppIconTextButton(
-                  buttonText: "Continue with Facebook",
-                  textStyle: TextStyles.font14BlackRegular,
-                  img: "assets/images/facebook.png",
-                  onPressed: () {},
+                verticalSpace(150.h),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: AppIconTextButton(
+                    buttonText: "Continue with Google",
+                    textStyle: TextStyles.font14BlackRegular,
+                    img: "assets/images/google.png",
+                    onPressed: () {
+                      context.read<LoginCubit>().signInWithGoogle();
+                    },
+                  ),
                 ),
                 const LoginBlocListener(),
                 const GoogleSignInBlocListener(),

@@ -1,7 +1,6 @@
 import 'package:e_commerce_firebase/features/register/logic/register_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -36,7 +35,7 @@ class _RegisterFormState extends State<RegisterForm> {
               size: 20,
             ),
           ),
-          verticalSpace(10),
+          verticalSpace(5),
           AppTextFormField(
             hintText: "Email",
             controller: context.read<RegisterCubit>().emailController,
@@ -52,7 +51,7 @@ class _RegisterFormState extends State<RegisterForm> {
               size: 20,
             ),
           ),
-          verticalSpace(10),
+          verticalSpace(5),
           AppTextFormField(
             hintText: "Phone number",
             controller: context.read<RegisterCubit>().phoneNumberController,
@@ -66,7 +65,7 @@ class _RegisterFormState extends State<RegisterForm> {
               size: 20,
             ),
           ),
-          verticalSpace(10),
+          verticalSpace(5),
           AppTextFormField(
             controller: context.read<RegisterCubit>().passwordController,
             hintText: 'password',
@@ -91,7 +90,7 @@ class _RegisterFormState extends State<RegisterForm> {
               }
             },
           ),
-          verticalSpace(10),
+          verticalSpace(5),
           AppTextFormField(
             controller:
                 context.read<RegisterCubit>().passwordConfirmationController,

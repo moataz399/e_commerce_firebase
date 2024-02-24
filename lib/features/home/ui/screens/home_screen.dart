@@ -11,33 +11,30 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-            child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
-          child: Column(
-            children: [
-              AppTextFormField(
-                hintText: "Search for product..",
-                validator: (value) {},
-                prefixIcon: const Icon(
-                  Icons.search_outlined,
-                  size: 20,
-                ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
+        child: Column(
+          children: [
+            AppTextFormField(
+              hintText: "Search for product..",
+              validator: (value) {},
+              prefixIcon: const Icon(
+                Icons.search_outlined,
+                size: 20,
               ),
-              verticalSpace(16.h),
-              const BannersSlider(),
-              verticalSpace(24.h),
-              const CategoriesSection(),
-              verticalSpace(24.h),
-              const ProductsSection(),
-            ],
-          ),
-        )),
+            ),
+            verticalSpace(16.h),
+            const BannersSlider(),
+            verticalSpace(24.h),
+            const CategoriesSection(),
+            verticalSpace(24.h),
+            const ProductsSection(),
+          ],
+        ),
+      ),
       ),
     );
   }
 }
-
-

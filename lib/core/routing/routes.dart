@@ -8,4 +8,7 @@ class Routes {
   static const String successScreen = '/successScreen';
   static const String categoryDetailsScreen = "/categoryDetailsScreen";
   static const String categoriesScreen = "/categoriesScreen";
+  static const String appLayout = "/appLayout";
+
+  static const String productsScreen = "/productsScreen";
 }

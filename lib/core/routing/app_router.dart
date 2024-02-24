@@ -1,19 +1,20 @@
 import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
-import 'package:e_commerce_firebase/features/register/logic/register_cubit.dart';
-import 'package:e_commerce_firebase/features/login/logic/cubit/login_cubit.dart';
-import 'package:e_commerce_firebase/features/login/ui/login_screen.dart';
-import 'package:e_commerce_firebase/features/register/ui/screens/register_screen.dart';
-import 'package:e_commerce_firebase/features/register/ui/screens/verify_email_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/app_layout.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/category_details_screen.dart';
-import 'package:e_commerce_firebase/features/home/ui/screens/caterories_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/screens/categories_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/screens/products_screen.dart';
 import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../features/login/ui/forgot_password_screen.dart';
+import '../../features/home/logic/home_cubit.dart';
 import '../../features/home/ui/screens/home_screen.dart';
+import '../../features/login/logic/cubit/login_cubit.dart';
+import '../../features/login/ui/forgot_password_screen.dart';
+import '../../features/login/ui/login_screen.dart';
+import '../../features/register/logic/register_cubit.dart';
+import '../../features/register/ui/screens/register_screen.dart';
+import '../../features/register/ui/screens/verify_email_screen.dart';
 import '../di/dependency_injection.dart';
 
 class AppRouter {
@@ -30,9 +31,42 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const CategoryDetailsScreen(),
         );
+      case Routes.productsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ProductsScreen(),
+        );
       case Routes.categoriesScreen:
         return MaterialPageRoute(
           builder: (_) => const CategoriesScreen(),
+        );
+      case Routes.appLayout:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+              create: (context) => getIt<HomeCubit>(),
+              child: const AppLayout()),
+        );
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        //Auth screens
+      case Routes.onBoardingScreen:
+        return MaterialPageRoute(
+          builder: (_) => const OnBoardingScreen(),
+        );
+      case Routes.successScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SuccessScreen(),
+        );
+      case Routes.registerScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: getIt<RegisterCubit>(),
+            child: const RegisterScreen(),
+          ),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
@@ -44,25 +78,11 @@ class AppRouter {
           builder: (_) => BlocProvider.value(
               value: getIt<LoginCubit>(), child: const ForgotPasswordScreen()),
         );
-      case Routes.registerScreen:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: getIt<RegisterCubit>(),
-            child: const RegisterScreen(),
-          ),
-        );
+
       case Routes.verifyEmailScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
               value: getIt<RegisterCubit>(), child: const VerifyEmailScreen()),
-        );
-      case Routes.onBoardingScreen:
-        return MaterialPageRoute(
-          builder: (_) => const OnBoardingScreen(),
-        );
-      case Routes.successScreen:
-        return MaterialPageRoute(
-          builder: (_) => const SuccessScreen(),
         );
 
       default:

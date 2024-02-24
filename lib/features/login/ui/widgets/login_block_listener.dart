@@ -21,7 +21,7 @@ class LoginBlocListener extends StatelessWidget {
           AppLoaders.loading(context);
         } else if (state is LoginSuccessState) {
           context.pop();
-          context.pushReplacementNamed(Routes.homeScreen);
+          context.pushReplacementNamed(Routes.appLayout);
         } else if (state is LoginFailureState) {
           context.pop();
           AppLoaders.errorSnackBar(context, state.error);

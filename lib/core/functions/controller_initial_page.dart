@@ -11,7 +11,7 @@ String? controllerInitialPage(BuildContext context) {
   final user = FirebaseAuth.instance.currentUser;
   if (user != null) {
     if (user.emailVerified) {
-      return Routes.homeScreen;
+      return Routes.appLayout;
     } else {
       return Routes.verifyEmailScreen;
     }

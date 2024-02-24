@@ -22,7 +22,7 @@ class GoogleSignInBlocListener extends StatelessWidget {
         } else if (state is GoogleSignInSuccessState) {
           context.pop();
           context.pushNamedAndRemoveUntil(
-            Routes.homeScreen,
+            Routes.appLayout,
             predicate: (Route<dynamic> route) => false,
           );
         } else if (state is GoogleSignInFailureState) {
