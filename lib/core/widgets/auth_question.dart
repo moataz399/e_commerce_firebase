@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theming/text_styles.dart';
+import '../theming/text_styles.dart';
 
 class AuthQuestion extends StatelessWidget {
    const AuthQuestion({super.key,required this.function,required this.question,required this.page});

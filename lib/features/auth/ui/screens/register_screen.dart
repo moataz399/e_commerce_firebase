@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
-import 'package:e_commerce_firebase/features/auth/ui/widgets/logo_and_header_text.dart';
+import 'package:e_commerce_firebase/core/widgets/logo_and_header_text.dart';
 import 'package:e_commerce_firebase/features/auth/ui/widgets/register_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_text_button.dart';
-import '../widgets/auth_question.dart';
+import '../../../../core/widgets/auth_question.dart';
 import '../widgets/register_bloc_listener.dart';
 
 class RegisterScreen extends StatelessWidget {

@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/text_styles.dart';
-import '../../widgets/verify_email_bloc_listener.dart';
+import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/text_styles.dart';
+import '../widgets/verify_email_bloc_listener.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
   const VerifyEmailScreen({super.key, this.email});

@@ -1,11 +1,10 @@
+import 'package:e_commerce_firebase/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
-import '../../logic/auth_cubit.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -15,16 +14,16 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-   bool isObscureText = true;
+  bool isObscureText = true;
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<AuthCubit>().loginFormKey,
+      key: context.read<LoginCubit>().loginFormKey,
       child: Column(
         children: [
           AppTextFormField(
             hintText: "Email",
-            controller: context.read<AuthCubit>().emailController,
+            controller: context.read<LoginCubit>().email,
             validator: (value) {
               if (value == null ||
                   value.isEmpty ||
@@ -37,9 +36,9 @@ class _LoginFormState extends State<LoginForm> {
               size: 20,
             ),
           ),
-          verticalSpace(25.h),
+          verticalSpace(10.h),
           AppTextFormField(
-            controller: context.read<AuthCubit>().passwordController,
+            controller: context.read<LoginCubit>().password,
             hintText: 'password',
             prefixIcon: const Icon(
               Icons.lock_outlined,
@@ -59,6 +58,9 @@ class _LoginFormState extends State<LoginForm> {
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return "please enter a valid password";
+              }
+               else if (AppRegex.hasMinLength(value)) {
+                return 'password must be at least 8 character';
               }
             },
           ),
