@@ -2,6 +2,7 @@ import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/app_layout.dart';
 import 'package:e_commerce_firebase/features/categories/ui/screens/categories_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/screens/product_details_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/products_screen.dart';
 import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,9 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
+        );case Routes.productsDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ProductDetailsScreen(),
         );
       case Routes.categoryDetailsScreen:
         return MaterialPageRoute(

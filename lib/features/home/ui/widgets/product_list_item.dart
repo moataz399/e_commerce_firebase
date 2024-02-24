@@ -1,7 +1,9 @@
+import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/spacing.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class ProductListItem extends StatelessWidget {
@@ -11,7 +13,7 @@ class ProductListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print(" tapped");
+        context.pushNamed(Routes.productsDetailsScreen);
       },
       child: Container(
         width: 164.w,

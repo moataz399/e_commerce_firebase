@@ -17,15 +17,15 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
-        title: 'My App',
-        theme: ThemeData(
-            appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
-            primaryColor: AppColors.mainGreen,
-            scaffoldBackgroundColor: Colors.white),
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: appRouter.generateRoute,
-        initialRoute: controllerInitialPage(context)
-      ),
+          title: 'My App',
+          theme: ThemeData(
+              appBarTheme: const AppBarTheme(
+                  backgroundColor: Colors.white, scrolledUnderElevation: 0.0),
+              primaryColor: AppColors.mainGreen,
+              scaffoldBackgroundColor: Colors.white),
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: appRouter.generateRoute,
+          initialRoute: controllerInitialPage(context)),
     );
   }
 }

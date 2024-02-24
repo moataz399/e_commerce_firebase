@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../theming/colors.dart';
 
-
 class ExpandableText extends StatefulWidget {
   const ExpandableText({super.key, required this.text});
+
   final String text;
 
   @override
@@ -37,10 +37,10 @@ class _ExpandableTextState extends State<ExpandableText> {
     return Container(
       child: secondHalf.isEmpty
           ? SmallText(
-              height: 1.8,
+              height: 1.9,
               text: firstHalf,
-              size: 16,
-              color: AppColors.darkBlue,
+              size: 14,
+              color: Color(0xff01040D),
             )
           : Container(
               child: Column(
@@ -49,11 +49,10 @@ class _ExpandableTextState extends State<ExpandableText> {
                 children: [
                   SmallText(
                     height: 1.8,
-                    size: 16,
-                    color: AppColors.darkBlue,
-                    text: hiddenText
-                        ? '$firstHalf...'
-                        : (firstHalf + secondHalf),
+                    size: 14,
+                    color: Color(0xff01040D),
+                    text:
+                        hiddenText ? '$firstHalf...' : (firstHalf + secondHalf),
                   ),
                   SizedBox(
                     height: 10.h,
