@@ -10,6 +10,7 @@ class AppTextFormField extends StatelessWidget {
   final InputBorder? enabledBorder;
   final TextStyle? inputTextStyle;
   final TextStyle? hintStyle;
+  final TextStyle? textStyle;
   final String hintText;
   final bool? isObscureText;
   final Widget? suffixIcon;
@@ -22,6 +23,7 @@ class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
     super.key,
     this.contentPadding,
+    this.textStyle,
     this.focusedBorder,
     this.height,
     this.enabledBorder,
@@ -39,7 +41,7 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? 90.h, // error
+      height: height ?? 80.h,
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
@@ -85,7 +87,7 @@ class AppTextFormField extends StatelessWidget {
           filled: true,
         ),
         obscureText: isObscureText ?? false,
-        style: TextStyles.font14DarkBlueMedium,
+        style:textStyle?? TextStyles.font14DarkBlueMedium,
         validator: (value) {
           return validator(value);
         },

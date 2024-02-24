@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_commerce_firebase/features/home/ui/screens/account_screen.dart';
-import 'package:e_commerce_firebase/features/home/ui/screens/cart_screen.dart';
-import 'package:e_commerce_firebase/features/home/ui/screens/categories_screen.dart';
+import 'package:e_commerce_firebase/features/account/ui/screens/account_screen.dart';
+import 'package:e_commerce_firebase/features/cart/ui/screens/cart_screen.dart';
+import 'package:e_commerce_firebase/features/categories/ui/screens/categories_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/home_screen.dart';
-import 'package:e_commerce_firebase/features/home/ui/screens/offers_screen.dart';
+import 'package:e_commerce_firebase/features/offers/ui/screens/offers_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';

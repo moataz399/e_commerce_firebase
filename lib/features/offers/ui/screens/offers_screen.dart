@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
-import '../widgets/product_list_item.dart';
+import '../../../home/ui/widgets/product_list_item.dart';
 
 class OffersScreen extends StatelessWidget {
   const OffersScreen({super.key});
