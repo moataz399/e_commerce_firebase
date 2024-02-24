@@ -1,9 +1,9 @@
 import 'dart:developer';
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
-import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
+import 'package:e_commerce_firebase/features/register/logic/register_cubit.dart';
 import 'package:e_commerce_firebase/core/widgets/logo_and_header_text.dart';
-import 'package:e_commerce_firebase/features/auth/ui/widgets/register_form.dart';
+import 'package:e_commerce_firebase/features/register/ui/widgets/register_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -64,8 +64,8 @@ class RegisterScreen extends StatelessWidget {
   }
 
   void validateThenDoRegister(BuildContext context) {
-    if (context.read<AuthCubit>().registerFormKey.currentState!.validate()) {
-      context.read<AuthCubit>().registerWithEmailAndPassword();
+    if (context.read<RegisterCubit>().registerFormKey.currentState!.validate()) {
+      context.read<RegisterCubit>().registerWithEmailAndPassword();
       log("validated");
     }
   }

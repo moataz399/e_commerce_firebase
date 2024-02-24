@@ -39,7 +39,7 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? 80.h, // error
+      height: height ?? 90.h, // error
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(

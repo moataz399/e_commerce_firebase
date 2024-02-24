@@ -3,8 +3,8 @@ import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/utils/app_strings.dart';
 import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
-import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
-import 'package:e_commerce_firebase/features/auth/logic/auth_state.dart';
+import 'package:e_commerce_firebase/features/register/logic/register_cubit.dart';
+import 'package:e_commerce_firebase/features/register/logic/register_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +15,7 @@ class VerifyEmailBlocListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit, AuthState>(
+    return BlocListener<RegisterCubit, RegisterState>(
       listenWhen: (previous, current) =>
           current is SuccessVerifyAccountState ||
           current is SendEmailVerificationLoadingState ||

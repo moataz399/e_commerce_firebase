@@ -1,5 +1,5 @@
 import 'package:e_commerce_firebase/core/services/firestore_service.dart';
-import 'package:e_commerce_firebase/features/auth/data/models/user_model.dart';
+import 'package:e_commerce_firebase/features/register/data/models/user_model.dart';
 import 'package:e_commerce_firebase/features/login/data/repo/login_repo.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
