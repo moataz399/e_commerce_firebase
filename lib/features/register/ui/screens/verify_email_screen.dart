@@ -2,15 +2,15 @@ import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/utils/app_images.dart';
 import 'package:e_commerce_firebase/core/utils/app_strings.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_button.dart';
-import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
+import 'package:e_commerce_firebase/features/register/logic/register_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/text_styles.dart';
-import '../../widgets/verify_email_bloc_listener.dart';
+import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/text_styles.dart';
+import '../widgets/verify_email_bloc_listener.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
   const VerifyEmailScreen({super.key, this.email});
@@ -23,8 +23,8 @@ class VerifyEmailScreen extends StatefulWidget {
 class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   void initState() {
-    context.read<AuthCubit>().sendEmailVerification();
-    context.read<AuthCubit>().setTimerForAutoRedirect();
+    context.read<RegisterCubit>().sendEmailVerification();
+    context.read<RegisterCubit>().setTimerForAutoRedirect();
     super.initState();
   }
 
@@ -35,7 +35,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () =>context.read<AuthCubit>().logOut(),
+            onPressed: () =>context.read<RegisterCubit>().logOut(),
             icon: const Icon(CupertinoIcons.clear),
           ),
         ],
@@ -54,7 +54,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               ),
               verticalSpace(10),
               Text(
-                context.read<AuthCubit>().emailController.text,
+                context.read<RegisterCubit>().emailController.text,
                 style: TextStyles.font12BlackRegular,
                 textAlign: TextAlign.center,
               ),
@@ -69,7 +69,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 buttonText: AppStrings.appContinue,
                 textStyle: TextStyles.font15WhiteBold,
                 onPressed: () =>
-                    context.read<AuthCubit>().checkEmailVerificationStatus(),
+                    context.read<RegisterCubit>().checkEmailVerificationStatus(),
               ),
               verticalSpace(10),
               AppTextButton(
@@ -78,7 +78,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     .apply(color: AppColors.mainGreen),
                 backgroundColor: Colors.white,
                 onPressed: () =>
-                    context.read<AuthCubit>().sendEmailVerification(),
+                    context.read<RegisterCubit>().sendEmailVerification(),
               ),
               const VerifyEmailBlocListener()
             ],

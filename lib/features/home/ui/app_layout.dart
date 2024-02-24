@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,6 @@ class AppLayout extends StatelessWidget {
             elevation: 15,
             onTap: (index) {
               cubit.changeIndex(index);
-              log(cubit.currentIndex.toString());
             },
             type: BottomNavigationBarType.fixed,
             currentIndex: cubit.currentIndex,

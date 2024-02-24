@@ -1,21 +1,20 @@
 import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
-import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
-import 'package:e_commerce_firebase/features/auth/ui/screens/login_screen.dart';
-import 'package:e_commerce_firebase/features/auth/ui/screens/register_screen.dart';
-import 'package:e_commerce_firebase/features/auth/ui/screens/verify_email/verify_email_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/app_layout.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/category_details_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/categories_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/products_screen.dart';
 import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../features/auth/ui/screens/forgot_password_screen.dart';
 import '../../features/home/logic/home_cubit.dart';
 import '../../features/home/ui/screens/home_screen.dart';
+import '../../features/login/logic/cubit/login_cubit.dart';
+import '../../features/login/ui/forgot_password_screen.dart';
+import '../../features/login/ui/login_screen.dart';
+import '../../features/register/logic/register_cubit.dart';
+import '../../features/register/ui/screens/register_screen.dart';
+import '../../features/register/ui/screens/verify_email_screen.dart';
 import '../di/dependency_injection.dart';
 
 class AppRouter {
@@ -40,27 +39,20 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const CategoriesScreen(),
         );
-      case Routes.loginScreen:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-              value: getIt<AuthCubit>(), child: const LoginScreen()),
-        );
       case Routes.appLayout:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
               create: (context) => getIt<HomeCubit>(),
               child: const AppLayout()),
         );
-      case Routes.forgotPassword:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-              value: getIt<AuthCubit>(), child: const ForgotPasswordScreen()),
-        );
-      case Routes.verifyEmailScreen:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-              value: getIt<AuthCubit>(), child: const VerifyEmailScreen()),
-        );
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
+        //Auth screens
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
           builder: (_) => const OnBoardingScreen(),
@@ -72,10 +64,27 @@ class AppRouter {
       case Routes.registerScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value: getIt<AuthCubit>(),
+            value: getIt<RegisterCubit>(),
             child: const RegisterScreen(),
           ),
         );
+      case Routes.loginScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+              value: getIt<LoginCubit>(), child: const LoginScreen()),
+        );
+      case Routes.forgotPassword:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+              value: getIt<LoginCubit>(), child: const ForgotPasswordScreen()),
+        );
+
+      case Routes.verifyEmailScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+              value: getIt<RegisterCubit>(), child: const VerifyEmailScreen()),
+        );
+
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

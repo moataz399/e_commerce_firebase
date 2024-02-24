@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_commerce_firebase/features/home/ui/screens/account_Screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/screens/account_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/cart_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/categories_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/home_screen.dart';

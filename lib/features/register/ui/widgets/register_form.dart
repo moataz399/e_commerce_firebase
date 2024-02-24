@@ -1,7 +1,6 @@
-import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
+import 'package:e_commerce_firebase/features/register/logic/register_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -20,12 +19,12 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<AuthCubit>().registerFormKey,
+      key: context.read<RegisterCubit>().registerFormKey,
       child: Column(
         children: [
           AppTextFormField(
             hintText: "User name",
-            controller: context.read<AuthCubit>().userNameController,
+            controller: context.read<RegisterCubit>().userNameController,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return "please enter a valid name";
@@ -36,10 +35,10 @@ class _RegisterFormState extends State<RegisterForm> {
               size: 20,
             ),
           ),
-          verticalSpace(25.h),
+          verticalSpace(5),
           AppTextFormField(
             hintText: "Email",
-            controller: context.read<AuthCubit>().emailController,
+            controller: context.read<RegisterCubit>().emailController,
             validator: (value) {
               if (value == null ||
                   value.isEmpty ||
@@ -52,10 +51,10 @@ class _RegisterFormState extends State<RegisterForm> {
               size: 20,
             ),
           ),
-          verticalSpace(25.h),
+          verticalSpace(5),
           AppTextFormField(
             hintText: "Phone number",
-            controller: context.read<AuthCubit>().phoneNumberController,
+            controller: context.read<RegisterCubit>().phoneNumberController,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return "please enter a valid phone number";
@@ -66,9 +65,9 @@ class _RegisterFormState extends State<RegisterForm> {
               size: 20,
             ),
           ),
-          verticalSpace(25.h),
+          verticalSpace(5),
           AppTextFormField(
-            controller: context.read<AuthCubit>().passwordController,
+            controller: context.read<RegisterCubit>().passwordController,
             hintText: 'password',
             prefixIcon: const Icon(
               Icons.lock_outlined,
@@ -91,10 +90,10 @@ class _RegisterFormState extends State<RegisterForm> {
               }
             },
           ),
-          verticalSpace(25.h),
+          verticalSpace(5),
           AppTextFormField(
             controller:
-                context.read<AuthCubit>().passwordConfirmationController,
+                context.read<RegisterCubit>().passwordConfirmationController,
             hintText: 'password Confirmation',
             isObscureText: isObscureText,
             prefixIcon: const Icon(
@@ -116,9 +115,9 @@ class _RegisterFormState extends State<RegisterForm> {
                 return "please enter a valid password";
               }
 
-              if (context.read<AuthCubit>().passwordController.text !=
+              if (context.read<RegisterCubit>().passwordController.text !=
                   context
-                      .read<AuthCubit>()
+                      .read<RegisterCubit>()
                       .passwordConfirmationController
                       .text) {
                 return "passwords don't match";
