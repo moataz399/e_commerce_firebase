@@ -14,7 +14,6 @@ class ProductListItem extends StatelessWidget {
         print(" tapped");
       },
       child: Container(
-        height: 205.h,
         width: 164.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.r),

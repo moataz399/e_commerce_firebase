@@ -1,5 +1,7 @@
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_form_field.dart';
+import 'package:e_commerce_firebase/features/home/ui/widgets/best_seller_section.dart';
+import 'package:e_commerce_firebase/features/home/ui/widgets/flash_offers_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/banner_widget.dart';
@@ -14,26 +16,30 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
-        child: Column(
-          children: [
-            AppTextFormField(
-              hintText: "Search for product..",
-              validator: (value) {},
-              prefixIcon: const Icon(
-                Icons.search_outlined,
-                size: 20,
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
+          child: Column(
+            children: [
+              AppTextFormField(
+                hintText: "Search for product..",
+                validator: (value) {},
+                prefixIcon: const Icon(
+                  Icons.search_outlined,
+                  size: 20,
+                ),
               ),
-            ),
-            verticalSpace(16.h),
-            const BannersSlider(),
-            verticalSpace(24.h),
-            const CategoriesSection(),
-            verticalSpace(24.h),
-            const ProductsSection(),
-          ],
+              verticalSpace(16.h),
+              const BannersSlider(),
+              verticalSpace(24.h),
+              const CategoriesSection(),
+              verticalSpace(24.h),
+              const ProductsSection(),
+              verticalSpace(24.h),
+              const FlashOffersSection(),
+              verticalSpace(24.h),
+              const BestSellerSection(),
+            ],
+          ),
         ),
-      ),
       ),
     );
   }
