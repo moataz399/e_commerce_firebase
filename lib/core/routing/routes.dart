@@ -11,4 +11,5 @@ class Routes {
   static const String appLayout = "/appLayout";
 
   static const String productsScreen = "/productsScreen";
+  static const String productsDetailsScreen = "/productsDetailsScreen";
 }
