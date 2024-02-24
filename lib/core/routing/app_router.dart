@@ -4,14 +4,17 @@ import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/login_screen.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/register_screen.dart';
 import 'package:e_commerce_firebase/features/auth/ui/screens/verify_email/verify_email_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/app_layout.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/category_details_screen.dart';
-import 'package:e_commerce_firebase/features/home/ui/screens/caterories_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/screens/categories_screen.dart';
+import 'package:e_commerce_firebase/features/home/ui/screens/products_screen.dart';
 import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/auth/ui/screens/forgot_password_screen.dart';
+import '../../features/home/logic/home_cubit.dart';
 import '../../features/home/ui/screens/home_screen.dart';
 import '../di/dependency_injection.dart';
 
@@ -29,6 +32,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const CategoryDetailsScreen(),
         );
+      case Routes.productsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ProductsScreen(),
+        );
       case Routes.categoriesScreen:
         return MaterialPageRoute(
           builder: (_) => const CategoriesScreen(),
@@ -37,6 +44,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
               value: getIt<AuthCubit>(), child: const LoginScreen()),
+        );
+      case Routes.appLayout:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+              create: (context) => getIt<HomeCubit>(),
+              child: const AppLayout()),
         );
       case Routes.forgotPassword:
         return MaterialPageRoute(

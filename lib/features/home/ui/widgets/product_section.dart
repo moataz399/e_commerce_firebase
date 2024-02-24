@@ -1,7 +1,9 @@
+import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/features/home/ui/widgets/product_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class ProductsSection extends StatelessWidget {
@@ -20,7 +22,9 @@ class ProductsSection extends StatelessWidget {
               style: TextStyles.font16BlackBoldSemiBold,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.pushNamed(Routes.productsScreen);
+              },
               child: Text(
                 "Show all",
                 style: TextStyles.font12GreenRegular,

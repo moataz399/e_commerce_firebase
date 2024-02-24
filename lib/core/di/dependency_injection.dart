@@ -1,5 +1,7 @@
 import 'package:e_commerce_firebase/core/helpers/cache_helper.dart';
 import 'package:e_commerce_firebase/features/auth/logic/auth_cubit.dart';
+import 'package:e_commerce_firebase/features/home/data/repos/home_repo.dart';
+import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/auth/data/repo/auth_repo.dart';
@@ -13,4 +15,6 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton<AuthRepo>(() => AuthRepo());
   getIt.registerFactory<AuthCubit>(() => AuthCubit(getIt()));
 
+  getIt.registerLazySingleton<HomeRepo>(() => HomeRepo());
+  getIt.registerFactory<HomeCubit>(() => HomeCubit());
 }
