@@ -66,7 +66,6 @@ class ProductListItem extends StatelessWidget {
                   IconButton(
                       padding: EdgeInsets.zero,
                       onPressed: () {
-                        print("fav tapped");
                       },
                       icon: const Icon(Icons.favorite_border_outlined,
                           size: 24, color: Colors.black)),

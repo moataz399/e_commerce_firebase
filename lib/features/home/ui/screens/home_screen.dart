@@ -1,7 +1,6 @@
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_form_field.dart';
-import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

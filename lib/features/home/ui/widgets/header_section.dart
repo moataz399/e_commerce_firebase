@@ -6,7 +6,7 @@ import '../../../../core/theming/text_styles.dart';
 import '../../data/models/product_model.dart';
 
 class HeaderSection extends StatelessWidget {
-  HeaderSection(
+  const HeaderSection(
       {super.key, required this.productModel, required this.headerTitle});
 
   final String headerTitle;
