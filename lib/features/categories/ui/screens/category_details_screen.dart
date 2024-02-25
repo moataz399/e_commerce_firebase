@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../home/data/models/product_model.dart';
 
 class CategoryDetailsScreen extends StatelessWidget {
   const CategoryDetailsScreen({super.key});
@@ -38,7 +39,17 @@ class CategoryDetailsScreen extends StatelessWidget {
                   childAspectRatio: 1 / 1.2,
                   children: List.generate(
                     10,
-                    (index) => const ProductListItem(),
+                    (index) => ProductListItem(
+                      productModel: ProductModel(
+                        discountValue: 0,
+                        image: "assets/images/hat.png",
+                        title: "Product",
+                        description:
+                            "Find both comfort and sophisticated style among our selection of furniture. Visit AZ furniture store to browse more and buy.  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui...",
+                        price: 4,
+                        productId: 1,
+                      ),
+                    ),
                   ),
                 )
               ],

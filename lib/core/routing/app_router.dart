@@ -1,5 +1,6 @@
 import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
+import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 import 'package:e_commerce_firebase/features/home/ui/app_layout.dart';
 import 'package:e_commerce_firebase/features/categories/ui/screens/categories_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/product_details_screen.dart';
@@ -22,23 +23,38 @@ class AppRouter {
   AppRouter();
 
   Route? generateRoute(RouteSettings settings) {
-    final arguments = settings.arguments;
+
     switch (settings.name) {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
-        );case Routes.productsDetailsScreen:
+        );
+      case Routes.productsDetailsScreen:
+        final args = settings.arguments as Map<String, dynamic>;
+        final ProductModel productModel = args["productModel"];
         return MaterialPageRoute(
-          builder: (_) => const ProductDetailsScreen(),
+          settings: settings,
+          builder: (_) => ProductDetailsScreen(
+            productModel: productModel,
+          ),
         );
       case Routes.categoryDetailsScreen:
         return MaterialPageRoute(
           builder: (_) => const CategoryDetailsScreen(),
         );
+
       case Routes.productsScreen:
+        final args = settings.arguments as Map<String, dynamic>;
+        final List<ProductModel> productModel = args["productModel"];
+        final String title = args["title"] as String;
         return MaterialPageRoute(
-          builder: (_) => const ProductsScreen(),
+          settings: settings,
+          builder: (_) => ProductsScreen(
+            title: title,
+            productModel: productModel,
+          ),
         );
+
       case Routes.categoriesScreen:
         return MaterialPageRoute(
           builder: (_) => const CategoriesScreen(),
@@ -49,14 +65,14 @@ class AppRouter {
               create: (context) => getIt<HomeCubit>(),
               child: const AppLayout()),
         );
-        ///////////////////////////////////////////////////
-        ///////////////////////////////////////////////////
-        ///////////////////////////////////////////////////
-        ///////////////////////////////////////////////////
-        ///////////////////////////////////////////////////
-        ///////////////////////////////////////////////////
-        ///////////////////////////////////////////////////
-        //Auth screens
+      ///////////////////////////////////////////////////
+      ///////////////////////////////////////////////////
+      ///////////////////////////////////////////////////
+      ///////////////////////////////////////////////////
+      ///////////////////////////////////////////////////
+      ///////////////////////////////////////////////////
+      ///////////////////////////////////////////////////
+      //Auth screens
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
           builder: (_) => const OnBoardingScreen(),
