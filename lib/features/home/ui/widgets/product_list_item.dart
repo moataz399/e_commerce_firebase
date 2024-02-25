@@ -1,19 +1,26 @@
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
+import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/functions/calculate_price.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
 
 class ProductListItem extends StatelessWidget {
-  const ProductListItem({super.key});
+  const ProductListItem({super.key, required this.productModel});
+
+  final ProductModel productModel;
+
+
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pushNamed(Routes.productsDetailsScreen);
+        context.pushNamed(Routes.productsDetailsScreen,
+            arguments: {"productModel": productModel});
       },
       child: Container(
         width: 164.w,
@@ -39,21 +46,23 @@ class ProductListItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(),
-                    width: 37.w,
-                    height: 24.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4.r),
-                      color: const Color(0xFFFF6264),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "50%",
-                        style: TextStyles.font12WhiteSemiBold,
-                      ),
-                    ),
-                  ),
+                  productModel.discountValue == 0
+                      ? Container()
+                      : Container(
+                          padding: const EdgeInsets.symmetric(),
+                          width: 37.w,
+                          height: 24.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4.r),
+                            color: const Color(0xFFFF6264),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "%${productModel.discountValue}",
+                              style: TextStyles.font12WhiteSemiBold,
+                            ),
+                          ),
+                        ),
                   IconButton(
                       padding: EdgeInsets.zero,
                       onPressed: () {
@@ -70,13 +79,13 @@ class ProductListItem extends StatelessWidget {
                 width: 125.w,
                 height: 73.h,
                 child: Image.asset(
-                  "assets/images/hat.png",
+                  productModel.image ?? "",
                   fit: BoxFit.cover,
                 ),
               ),
               verticalSpace(13.h),
               Text(
-                "Bucket hat",
+                productModel.title ?? "",
                 style: TextStyles.font14BlackRegular.copyWith(
                   color: const Color(0xFF01221D),
                 ),
@@ -85,16 +94,23 @@ class ProductListItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("\$4.00", style: TextStyles.font14BlackBold),
+                  productModel.discountValue == 0
+                      ? Text("\$${productModel.price.toString()}",
+                          style: TextStyles.font14BlackBold)
+                      : Text(
+                          "${calcPrice(productPrice: productModel.price, discountValue: productModel.discountValue)}",
+                          style: TextStyles.font14BlackBold),
                   horizontalSpace(6.w),
-                  const Text(
-                    "\$2.00",
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w400,
-                        decoration: TextDecoration.lineThrough),
-                  ),
+                  productModel.discountValue == 0
+                      ? Container()
+                      : Text(
+                          "${productModel.price}",
+                          style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                              decoration: TextDecoration.lineThrough),
+                        ),
                 ],
               ),
             ],

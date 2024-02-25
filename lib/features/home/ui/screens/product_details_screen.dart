@@ -1,15 +1,18 @@
+import 'package:e_commerce_firebase/core/functions/calculate_price.dart';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
+import 'package:e_commerce_firebase/core/utils/constants.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_button.dart';
-import 'package:e_commerce_firebase/core/widgets/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
-
+import '../../data/models/product_model.dart';
 import '../widgets/recommendation_product.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({super.key, required this.productModel});
+
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 ),
                 width: double.infinity,
                 child: Image.asset(
-                  "assets/images/hat.png",
+                  productModel.image,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -39,26 +42,47 @@ class ProductDetailsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Brown Hat",
+                    productModel.title,
                     style: TextStyles.font18BlackBold,
                   ),
                 ],
               ),
               verticalSpace(8),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: "\$",
-                      style: TextStyles.font14GrayRegular,
+              Row(
+                children: [
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "\$",
+                          style: TextStyles.font14GrayRegular,
+                        ),
+                        productModel.discountValue == 0
+                            ? TextSpan(
+                                text: productModel.price.toString(),
+                                style: TextStyles.font14GreenBold,
+                              )
+                            : TextSpan(
+                                text:
+                                    "${calcPrice(productPrice: productModel.price, discountValue: productModel.discountValue)}",
+                                style: TextStyles.font14GreenBold,
+                              ),
+                      ],
                     ),
-                    TextSpan(
-                      text: "4.00",
-                      style: TextStyles.font14GreenBold,
-                    ),
-                  ],
-                ),
+                  ),
+                  horizontalSpace(12),
+                  productModel.discountValue == 0
+                      ? const Text("")
+                      : Text(
+                          productModel.price.toString(),
+                          style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400,
+                              decoration: TextDecoration.lineThrough),
+                        )
+                ],
               ),
               verticalSpace(16),
               Text(
@@ -67,7 +91,7 @@ class ProductDetailsScreen extends StatelessWidget {
               ),
               verticalSpace(12),
               ReadMoreText(
-                'Find both comfort and sophisticated style among our selection of furniture.Find both comfort and sophisticated style among our selection of furniture.Find both comfort and sophisticated style among our selection of furniture.Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.',
+                productModel.description,
                 trimLines: 5,
                 style: TextStyles.font14DarkBlueRegular,
                 colorClickableText: Colors.grey,
@@ -89,7 +113,9 @@ class ProductDetailsScreen extends StatelessWidget {
                 style: TextStyles.font14DarkBlueSemiBold,
               ),
               verticalSpace(16),
-              RecommendationProducts(),
+              RecommendationProducts(
+                productModel: Constants.recommendationProductList,
+              ),
               verticalSpace(16),
               AppTextButton(
                   buttonText: "Add to Cart",

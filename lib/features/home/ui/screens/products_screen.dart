@@ -6,14 +6,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
+import '../../data/models/product_model.dart';
 
 class ProductsScreen extends StatelessWidget {
-  const ProductsScreen({super.key});
+  const ProductsScreen(
+      {super.key, required this.title, required this.productModel});
+
+  final String title;
+  final List<ProductModel> productModel;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Products'),
+      appBar: CustomAppBar(title: title),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -39,8 +44,10 @@ class ProductsScreen extends StatelessWidget {
                   clipBehavior: Clip.none,
                   childAspectRatio: 1 / 1.2,
                   children: List.generate(
-                    10,
-                    (index) => const ProductListItem(),
+                    productModel.length,
+                    (index) => ProductListItem(
+                      productModel: productModel[index],
+                    ),
                   ),
                 )
               ],

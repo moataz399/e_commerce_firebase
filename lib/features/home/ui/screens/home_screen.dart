@@ -1,10 +1,11 @@
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_form_field.dart';
-import 'package:e_commerce_firebase/features/home/ui/widgets/best_seller_section.dart';
-import 'package:e_commerce_firebase/features/home/ui/widgets/flash_offers_section.dart';
+import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/utils/constants.dart';
 import '../widgets/banner_widget.dart';
 import '../../../categories/ui/widgets/categories_section.dart';
 import '../widgets/product_section.dart';
@@ -38,11 +39,20 @@ class HomeScreen extends StatelessWidget {
               verticalSpace(24.h),
               const CategoriesSection(),
               verticalSpace(24.h),
-              const ProductsSection(),
+              ProductsSection(
+                headerTitle: "Products",
+                productModel:  Constants.productList,
+              ),
               verticalSpace(16.h),
-              const FlashOffersSection(),
+              ProductsSection(
+                headerTitle: "Flash Offers",
+                productModel: Constants.flashOffersList,
+              ),
               verticalSpace(16.h),
-              const BestSellerSection(),
+              ProductsSection(
+                headerTitle: "Best Seller",
+                productModel: Constants.bestSellerList,
+              ),
             ],
           ),
         ),
