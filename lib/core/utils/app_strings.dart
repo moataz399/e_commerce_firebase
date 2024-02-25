@@ -3,7 +3,7 @@ class AppStrings {
       'your account has been created! Verify email to continue.';
   static const String congratulation = 'Congratulation';
   static const String appContinue = "Continue";
-
+  static const String cart = 'Cart';
   static const String emailSent = 'Email Sent';
   static const String emailSentSuccess =
       'Please Check your inbox and verify your email.';
