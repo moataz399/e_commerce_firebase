@@ -23,7 +23,7 @@ class AppRouter {
   AppRouter();
 
   Route? generateRoute(RouteSettings settings) {
-    final arguments = settings.arguments;
+
     switch (settings.name) {
       case Routes.homeScreen:
         return MaterialPageRoute(

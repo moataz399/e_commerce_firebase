@@ -1,12 +1,9 @@
-import 'package:e_commerce_firebase/core/helpers/extensions.dart';
-import 'package:e_commerce_firebase/core/utils/constants.dart';
 import 'package:e_commerce_firebase/features/home/ui/widgets/product_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
-import '../../../../core/routing/routes.dart';
-import '../../../../core/theming/text_styles.dart';
 import '../../data/models/product_model.dart';
+import 'header_section.dart';
 
 class ProductsSection extends StatelessWidget {
   const ProductsSection(
@@ -19,27 +16,9 @@ class ProductsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              headerTitle,
-              style: TextStyles.font16BlackBoldSemiBold,
-            ),
-            TextButton(
-              onPressed: () {
-                context.pushNamed(Routes.productsScreen, arguments: {
-                  "title": headerTitle,
-                  "productModel": productModel
-                });
-              },
-              child: Text(
-                "Show all",
-                style: TextStyles.font12GreenRegular,
-              ),
-            ),
-          ],
+        HeaderSection(
+          headerTitle: headerTitle,
+          productModel: productModel,
         ),
         verticalSpace(16.h),
         SizedBox(
@@ -52,8 +31,7 @@ class ProductsSection extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w),
-                  child: ProductListItem(
-                      productModel:productModel[index]),
+                  child: ProductListItem(productModel: productModel[index]),
                 );
               }),
         ),

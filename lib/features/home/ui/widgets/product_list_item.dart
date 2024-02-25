@@ -98,13 +98,13 @@ class ProductListItem extends StatelessWidget {
                       ? Text("\$${productModel.price.toString()}",
                           style: TextStyles.font14BlackBold)
                       : Text(
-                          "${calcPrice(productPrice: productModel.price, discountValue: productModel.discountValue)}",
+                          "\$${calcPrice(productPrice: productModel.price, discountValue: productModel.discountValue)}",
                           style: TextStyles.font14BlackBold),
                   horizontalSpace(6.w),
                   productModel.discountValue == 0
                       ? Container()
                       : Text(
-                          "${productModel.price}",
+                          "\$${productModel.price}",
                           style: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
