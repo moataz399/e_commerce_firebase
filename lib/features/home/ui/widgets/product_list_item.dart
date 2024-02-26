@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
+import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,20 +10,24 @@ import '../../../../core/functions/calculate_price.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
+import '../../../../core/utils/constants.dart';
 
-class ProductListItem extends StatelessWidget {
+class ProductListItem extends StatefulWidget {
   const ProductListItem({super.key, required this.productModel});
 
   final ProductModel productModel;
 
+  @override
+  State<ProductListItem> createState() => _ProductListItemState();
+}
 
-
+class _ProductListItemState extends State<ProductListItem> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         context.pushNamed(Routes.productsDetailsScreen,
-            arguments: {"productModel": productModel});
+            arguments: {"productModel": widget.productModel});
       },
       child: Container(
         width: 164.w,
@@ -46,7 +53,7 @@ class ProductListItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  productModel.discountValue == 0
+                  widget.productModel.discountValue == 0
                       ? Container()
                       : Container(
                           padding: const EdgeInsets.symmetric(),
@@ -58,18 +65,31 @@ class ProductListItem extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              "%${productModel.discountValue}",
+                              "%${widget.productModel.discountValue}",
                               style: TextStyles.font12WhiteSemiBold,
                             ),
                           ),
                         ),
                   IconButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: () {
-                        print("fav tapped");
-                      },
-                      icon: const Icon(Icons.favorite_border_outlined,
-                          size: 24, color: Colors.black)),
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      widget.productModel.inFav = !widget.productModel.inFav!;
+                      log(widget.productModel.inFav.toString());
+                      setState(() {});
+                      if (widget.productModel.inFav == true) {
+                        Constants.favList.add(widget.productModel);
+                        setState(() {});
+                      } else {
+                        Constants.favList.remove(widget.productModel);
+                        setState(() {});
+                      }
+                    },
+                    icon: widget.productModel.inFav == true
+                        ? Icon(Icons.favorite,
+                            size: 24, color: AppColors.mainGreen)
+                        : Icon(Icons.favorite_border_outlined,
+                            size: 24, color: Colors.black),
+                  )
                 ],
               ),
               Container(
@@ -79,13 +99,13 @@ class ProductListItem extends StatelessWidget {
                 width: 125.w,
                 height: 73.h,
                 child: Image.asset(
-                  productModel.image ?? "",
+                  widget.productModel.image ?? "",
                   fit: BoxFit.cover,
                 ),
               ),
               verticalSpace(13.h),
               Text(
-                productModel.title ?? "",
+                widget.productModel.title ?? "",
                 style: TextStyles.font14BlackRegular.copyWith(
                   color: const Color(0xFF01221D),
                 ),
@@ -94,17 +114,17 @@ class ProductListItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  productModel.discountValue == 0
-                      ? Text("\$${productModel.price.toString()}",
+                  widget.productModel.discountValue == 0
+                      ? Text("\$${widget.productModel.price.toString()}",
                           style: TextStyles.font14BlackBold)
                       : Text(
-                          "\$${calcPrice(productPrice: productModel.price, discountValue: productModel.discountValue)}",
+                          "\$${calcPrice(productPrice: widget.productModel.price, discountValue: widget.productModel.discountValue)}",
                           style: TextStyles.font14BlackBold),
                   horizontalSpace(6.w),
-                  productModel.discountValue == 0
+                  widget.productModel.discountValue == 0
                       ? Container()
                       : Text(
-                          "\$${productModel.price}",
+                          "\$${widget.productModel.price}",
                           style: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,

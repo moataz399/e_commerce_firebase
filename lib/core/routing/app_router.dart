@@ -1,5 +1,6 @@
 import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
+import 'package:e_commerce_firebase/features/favourite/ui/screens/favourite_screen.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 import 'package:e_commerce_firebase/features/home/ui/app_layout.dart';
 import 'package:e_commerce_firebase/features/categories/ui/screens/categories_screen.dart';
@@ -24,7 +25,6 @@ class AppRouter {
   AppRouter();
 
   Route? generateRoute(RouteSettings settings) {
-
     switch (settings.name) {
       case Routes.homeScreen:
         return MaterialPageRoute(
@@ -34,6 +34,10 @@ class AppRouter {
       case Routes.searchScreen:
         return MaterialPageRoute(
           builder: (_) => const SearchScreen(),
+        );
+      case Routes.favouriteScreen:
+        return MaterialPageRoute(
+          builder: (_) =>  FavouriteScreen(),
         );
       case Routes.productsDetailsScreen:
         final args = settings.arguments as Map<String, dynamic>;
