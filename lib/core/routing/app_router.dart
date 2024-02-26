@@ -6,6 +6,7 @@ import 'package:e_commerce_firebase/features/categories/ui/screens/categories_sc
 import 'package:e_commerce_firebase/features/home/ui/screens/product_details_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/products_screen.dart';
 import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_screen.dart';
+import 'package:e_commerce_firebase/features/search/ui/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/categories/ui/screens/category_details_screen.dart';
@@ -28,6 +29,11 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
+        );
+
+      case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SearchScreen(),
         );
       case Routes.productsDetailsScreen:
         final args = settings.arguments as Map<String, dynamic>;

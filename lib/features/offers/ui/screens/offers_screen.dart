@@ -1,7 +1,9 @@
+import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/spacing.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
 import '../../../home/data/models/product_model.dart';
@@ -25,8 +27,12 @@ class OffersScreen extends StatelessWidget {
               ),
               verticalSpace(16.h),
               AppTextFormField(
+                readOnly: true,
                 hintText: "Search for product..",
                 validator: (value) {},
+                onTap: () {
+                  context.pushNamed(Routes.searchScreen);
+                },
                 prefixIcon: const Icon(
                   Icons.search_outlined,
                   size: 20,
