@@ -63,13 +63,15 @@ class Constants {
       productId: 4,
     ),
   ];
+
+  static List<ProductModel> favList = [];
   static List<ProductModel> flashOffersList = [
     ProductModel(
       discountValue: 50,
       image: "assets/images/glasses.png",
       title: "glasses",
       description:
-      "Find both comfort and sophisticated style among our selection of furniture. Visit AZ furniture store to browse more and buy.  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui...",
+          "Find both comfort and sophisticated style among our selection of furniture. Visit AZ furniture store to browse more and buy.  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui...",
       price: 800,
       productId: 3,
     ),
@@ -100,7 +102,6 @@ class Constants {
       price: 120,
       productId: 2,
     ),
-
   ];
   static List<ProductModel> bestSellerList = [
     ProductModel(

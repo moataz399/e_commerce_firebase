@@ -15,10 +15,20 @@ class TextStyles {
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.regular,
     color: Colors.black,
+  );static TextStyle font14BlackMedium= TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium
+    ,
+    color: Colors.black,
   );
   static TextStyle font14BlackBold = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.bold,
+    color: Colors.black,
+  );
+  static TextStyle font14BlackSemiBold = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.semiBold,
     color: Colors.black,
   );
   static TextStyle font22BlackBold = TextStyle(
