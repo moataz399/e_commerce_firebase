@@ -25,7 +25,7 @@ class OffersScreen extends StatelessWidget {
                 "offers",
                 style: TextStyles.font18BlackBoldSemiBold,
               ),
-              verticalSpace(16.h),
+              verticalSpace(16),
               AppTextFormField(
                 readOnly: true,
                 hintText: "Search for product..",
@@ -39,7 +39,7 @@ class OffersScreen extends StatelessWidget {
                   color: Colors.grey,
                 ),
               ),
-              verticalSpace(16.h),
+              verticalSpace(16),
               GridView.count(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

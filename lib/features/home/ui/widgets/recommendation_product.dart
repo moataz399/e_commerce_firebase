@@ -6,9 +6,11 @@ import '../../../../core/helpers/spacing.dart';
 import '../../data/models/product_model.dart';
 
 class RecommendationProducts extends StatelessWidget {
-  const RecommendationProducts({super.key, required this.productModel});
+  const RecommendationProducts({super.key, required this.productModel,this.sameProductId});
 
   final List<ProductModel> productModel;
+
+  final int?  sameProductId;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class RecommendationProducts extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 8.w),
                   child: ProductListItem(
                     productModel: productModel[index],
+                    sameProductId: sameProductId,
                   ),
                 );
               }),

@@ -59,7 +59,7 @@ class _BannersSliderState extends State<BannersSlider> {
             },
           ),
         ),
-        verticalSpace(8.h),
+        verticalSpace(8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

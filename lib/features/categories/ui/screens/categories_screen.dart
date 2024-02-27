@@ -20,7 +20,7 @@ class CategoriesScreen extends StatelessWidget {
                 "Categories",
                 style: TextStyles.font18BlackBoldSemiBold,
               ),
-              verticalSpace(16.h),
+              verticalSpace(16),
               GridView.count(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

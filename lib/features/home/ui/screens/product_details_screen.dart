@@ -115,6 +115,7 @@ class ProductDetailsScreen extends StatelessWidget {
               verticalSpace(16),
               RecommendationProducts(
                 productModel: Constants.recommendationProductList,
+                sameProductId: productModel.productId,
               ),
               verticalSpace(16),
               AppTextButton(
