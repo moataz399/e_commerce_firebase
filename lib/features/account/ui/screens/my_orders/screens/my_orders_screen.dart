@@ -5,6 +5,8 @@ import 'package:e_commerce_firebase/features/account/ui/screens/my_orders/widget
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../widgets/past_orders.dart';
+
 
 class MyOrdersScreen extends StatelessWidget {
   const MyOrdersScreen({super.key});
@@ -62,7 +64,7 @@ class MyOrdersScreen extends StatelessWidget {
               const Expanded(
                 child: TabBarView(children: [
                   CurrentOrdersList(),
-                  CurrentOrdersList(),
+                  PastOrdersList(),
                 ]),
               )
             ],

@@ -180,3 +180,9 @@ class Constants {
     ),
   ];
 }
+
+enum OrderStatus {
+  pending,
+  delivered,
+  canceled,
+}

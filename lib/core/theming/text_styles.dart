@@ -15,10 +15,10 @@ class TextStyles {
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.regular,
     color: Colors.black,
-  );static TextStyle font14BlackMedium= TextStyle(
+  );
+  static TextStyle font14BlackMedium = TextStyle(
     fontSize: 14.sp,
-    fontWeight: FontWeightHelper.medium
-    ,
+    fontWeight: FontWeightHelper.medium,
     color: Colors.black,
   );
   static TextStyle font14BlackBold = TextStyle(
@@ -83,7 +83,18 @@ class TextStyles {
   static TextStyle font12DarkOrangeRegular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
-    color: Color(0xffBF6A07),
+    color: const Color(0xffBF6A07),
+  );
+  static TextStyle font12LightRedRegular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: const Color(0xffFF6264),
+  );
+
+  static TextStyle font12DLightGreenRegular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: const Color(0xff07BFA5),
   );
 
   static TextStyle font18BlackBold = TextStyle(
@@ -124,7 +135,6 @@ class TextStyles {
     fontWeight: FontWeightHelper.medium,
     color: AppColors.mainGreen,
   );
-
 
   static TextStyle font14GrayRegular = TextStyle(
     fontSize: 14.sp,
