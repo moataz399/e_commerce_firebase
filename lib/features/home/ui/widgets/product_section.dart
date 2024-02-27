@@ -20,7 +20,7 @@ class ProductsSection extends StatelessWidget {
           headerTitle: headerTitle,
           productModel: productModel,
         ),
-        verticalSpace(16.h),
+        verticalSpace(16),
         SizedBox(
           height: 204.h,
           child: ListView.builder(
@@ -35,7 +35,7 @@ class ProductsSection extends StatelessWidget {
                 );
               }),
         ),
-        verticalSpace(16.h),
+        verticalSpace(16),
       ],
     );
   }

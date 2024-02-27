@@ -31,13 +31,13 @@ class ForgotPasswordScreen extends StatelessWidget {
                   title: "ForgotPassword",
                   width: 163.w,
                 ),
-                verticalSpace(16.h),
+                verticalSpace(16),
                 Text(
                   "Please enter the Email associated with your account",
                   style: TextStyles.font14GrayRegular
                       .copyWith(color: const Color(0xff8991A4)),
                 ),
-                verticalSpace(24.h),
+                verticalSpace(24),
                 AppTextFormField(
                   hintText: "Email",
                   controller: context.read<LoginCubit>().email,
@@ -50,7 +50,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   },
                   prefixIcon: const Icon(Icons.email_outlined),
                 ),
-                verticalSpace(30.h),
+                verticalSpace(30),
                 AppTextButton(
                   buttonText: "Send email",
                   buttonHeight: 56.h,

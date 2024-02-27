@@ -31,9 +31,9 @@ class RegisterScreen extends StatelessWidget {
                   emoji: "🎉",
                   img: "assets/images/logo.png",
                 ),
-                verticalSpace(25.h),
+                verticalSpace(25),
                const RegisterForm(),
-                verticalSpace(32.h),
+                verticalSpace(32),
                 AppTextButton(
                   buttonText: "Register",
                   textStyle: TextStyles.font15WhiteBold,
@@ -43,7 +43,7 @@ class RegisterScreen extends StatelessWidget {
                   buttonHeight: 56.h,
                   borderRadius: 16,
                 ),
-                verticalSpace(30.h),
+                verticalSpace(30),
                 Center(
                   child: AuthQuestion(
                     function: () {
@@ -53,7 +53,7 @@ class RegisterScreen extends StatelessWidget {
                     page: "Login",
                   ),
                 ),
-                verticalSpace(30.h),
+                verticalSpace(30),
                 const RegisterBlocListener(),
               ],
             ),

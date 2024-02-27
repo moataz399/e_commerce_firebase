@@ -34,7 +34,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                     color: Colors.grey,
                   ),
                 ),
-                verticalSpace(16.h),
+                verticalSpace(16),
                 GridView.count(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
