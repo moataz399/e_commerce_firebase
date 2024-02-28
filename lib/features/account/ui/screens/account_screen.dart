@@ -29,7 +29,10 @@ class AccountScreen extends StatelessWidget {
                   size: 24,
                   color: Colors.grey,
                 ),
-                onTap: () {},
+                onTap: () {
+                 // context.pushNamed(Routes.addressesScreen);
+                  context.pushNamed(Routes.notificationsScreen);
+                },
                 leading: Container(
                   width: 48.w,
                   height: 48.w,
