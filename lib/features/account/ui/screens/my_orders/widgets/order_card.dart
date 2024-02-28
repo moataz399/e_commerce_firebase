@@ -1,4 +1,6 @@
+import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
+import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -11,29 +13,7 @@ class OrderCard extends StatelessWidget {
 
   var status = OrderStatus.delivered;
 
-  Color changeColor(status) {
-    if (status == OrderStatus.pending) {
-      return AppColors.lightOrange;
-    } else if (status == OrderStatus.delivered) {
-      return AppColors.lightGreen;
-    } else if (status == OrderStatus.canceled) {
-      return Color(0xffFF6264).withOpacity(.10);
-    } else {
-      return AppColors.lighterGray;
-    }
-  }
 
-  TextStyle changeTextColor(status) {
-    if (status == OrderStatus.pending) {
-      return TextStyles.font12DarkOrangeRegular;
-    } else if (status == OrderStatus.delivered) {
-      return TextStyles.font12DLightGreenRegular;
-    } else if (status == OrderStatus.canceled) {
-      return TextStyles.font12LightRedRegular;
-    } else {
-      return TextStyles.font12DarkOrangeRegular;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +105,9 @@ class OrderCard extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  context.pushNamed(Routes.orderDetailsScreen);
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

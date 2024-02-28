@@ -25,6 +25,10 @@ class TextStyles {
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.bold,
     color: Colors.black,
+  );static TextStyle font20BlackBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.black,
   );
   static TextStyle font14BlackSemiBold = TextStyle(
     fontSize: 14.sp,
@@ -135,6 +139,17 @@ class TextStyles {
     fontWeight: FontWeightHelper.medium,
     color: AppColors.mainGreen,
   );
+  static TextStyle font14GreyRegular= TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: AppColors.gray,
+  );
+
+  static TextStyle font14extraGreenRegular= TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: AppColors.extraGreen,
+  );
 
   static TextStyle font14GrayRegular = TextStyle(
     fontSize: 14.sp,
@@ -183,7 +198,7 @@ class TextStyles {
     fontWeight: FontWeightHelper.bold,
     color: Colors.black,
   );
-  static TextStyle font16BlackBoldSemiBold = TextStyle(
+  static TextStyle font16BlackSemiBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: Colors.black,
