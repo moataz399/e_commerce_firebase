@@ -10,6 +10,7 @@ import 'package:e_commerce_firebase/features/onboarding/ui/screens/onboarding_sc
 import 'package:e_commerce_firebase/features/search/ui/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/account/ui/screens/my_orders/screens/order_details_screen.dart';
 import '../../features/categories/ui/screens/category_details_screen.dart';
 import '../../features/home/logic/home_cubit.dart';
 import '../../features/home/ui/screens/home_screen.dart';
@@ -29,6 +30,10 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
+        );
+        case Routes.orderDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) =>  OrderDetailsScreen(),
         );
 
       case Routes.searchScreen:

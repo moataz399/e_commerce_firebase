@@ -1,3 +1,7 @@
+import 'package:e_commerce_firebase/core/theming/colors.dart';
+import 'package:e_commerce_firebase/core/theming/text_styles.dart';
+import 'package:flutter/material.dart';
+
 import '../../features/home/data/models/product_model.dart';
 import '../../features/onboarding/data/models/onboarding_model.dart';
 
@@ -179,4 +183,33 @@ class Constants {
       productId: 1,
     ),
   ];
+}
+
+enum OrderStatus {
+  pending,
+  delivered,
+  canceled,
+}
+Color changeColor(status) {
+  if (status == OrderStatus.pending) {
+    return AppColors.lightOrange;
+  } else if (status == OrderStatus.delivered) {
+    return AppColors.lightGreen;
+  } else if (status == OrderStatus.canceled) {
+    return Color(0xffFF6264).withOpacity(.10);
+  } else {
+    return AppColors.lighterGray;
+  }
+}
+
+TextStyle changeTextColor(status) {
+  if (status == OrderStatus.pending) {
+    return TextStyles.font12DarkOrangeRegular;
+  } else if (status == OrderStatus.delivered) {
+    return TextStyles.font12DLightGreenRegular;
+  } else if (status == OrderStatus.canceled) {
+    return TextStyles.font12LightRedRegular;
+  } else {
+    return TextStyles.font12DarkOrangeRegular;
+  }
 }

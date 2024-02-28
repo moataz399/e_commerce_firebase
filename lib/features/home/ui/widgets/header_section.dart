@@ -20,7 +20,7 @@ class HeaderSection extends StatelessWidget {
       children: [
         Text(
           headerTitle,
-          style: TextStyles.font16BlackBoldSemiBold,
+          style: TextStyles.font16BlackSemiBold,
         ),
         TextButton(
           onPressed: () {

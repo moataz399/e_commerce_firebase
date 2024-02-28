@@ -45,7 +45,7 @@ class LogoAndHeaderText extends StatelessWidget {
                   child: Container(
                     width: width ?? 180.w,
                     height: 8.h,
-                    decoration: const BoxDecoration(
+                    decoration:  BoxDecoration(
                         color: AppColors.lightGreen, shape: BoxShape.rectangle),
                   ),
                 ),

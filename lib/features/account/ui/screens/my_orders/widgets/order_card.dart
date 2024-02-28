@@ -1,13 +1,19 @@
+import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
+import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../core/utils/constants.dart';
+
 class OrderCard extends StatelessWidget {
   OrderCard({super.key});
 
-  String status = "Delivered";
+  var status = OrderStatus.delivered;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,14 +76,12 @@ class OrderCard extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             horizontal: 12.w, vertical: 6.h),
                         decoration: BoxDecoration(
-                          color: AppColors.lightOrange,
+                          color: changeColor(status),
                           borderRadius: BorderRadius.circular(35.r),
                         ),
                         child: Center(
-                          child: Text(
-                            "Pending",
-                            style: TextStyles.font12DarkOrangeRegular,
-                          ),
+                          child:
+                              Text(status.name, style: changeTextColor(status)),
                         ),
                       )
                     ],
@@ -101,7 +105,9 @@ class OrderCard extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  context.pushNamed(Routes.orderDetailsScreen);
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

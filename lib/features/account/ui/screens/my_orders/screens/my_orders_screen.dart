@@ -4,6 +4,7 @@ import 'package:e_commerce_firebase/core/widgets/custom_app_bar.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/my_orders/widgets/current_orders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../widgets/past_orders.dart';
 
 
 class MyOrdersScreen extends StatelessWidget {
@@ -16,7 +17,7 @@ class MyOrdersScreen extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           title: "My Orders",
-          style: TextStyles.font16BlackBoldSemiBold,
+          style: TextStyles.font16BlackSemiBold,
         ),
         body: SafeArea(
             child: Padding(
@@ -62,7 +63,7 @@ class MyOrdersScreen extends StatelessWidget {
               const Expanded(
                 child: TabBarView(children: [
                   CurrentOrdersList(),
-                  CurrentOrdersList(),
+                  PastOrdersList(),
                 ]),
               )
             ],
