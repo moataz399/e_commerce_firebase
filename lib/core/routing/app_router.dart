@@ -1,5 +1,7 @@
 import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
+import 'package:e_commerce_firebase/features/account/ui/screens/Addresses/screens/Addresses_screen.dart';
+import 'package:e_commerce_firebase/features/account/ui/screens/notifications/ui/screens/notifications_screen.dart';
 import 'package:e_commerce_firebase/features/favourite/ui/screens/favourite_screen.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 import 'package:e_commerce_firebase/features/home/ui/app_layout.dart';
@@ -31,9 +33,17 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
         );
-        case Routes.orderDetailsScreen:
+      case Routes.notificationsScreen:
         return MaterialPageRoute(
-          builder: (_) =>  OrderDetailsScreen(),
+          builder: (_) => const NotificationsScreen(),
+        );
+      case Routes.addressesScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AddressesScreen(),
+        );
+      case Routes.orderDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => OrderDetailsScreen(),
         );
 
       case Routes.searchScreen:
@@ -42,7 +52,7 @@ class AppRouter {
         );
       case Routes.favouriteScreen:
         return MaterialPageRoute(
-          builder: (_) =>  FavouriteScreen(),
+          builder: (_) => FavouriteScreen(),
         );
       case Routes.productsDetailsScreen:
         final args = settings.arguments as Map<String, dynamic>;
