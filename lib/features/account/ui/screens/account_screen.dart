@@ -31,7 +31,7 @@ class AccountScreen extends StatelessWidget {
                 ),
                 onTap: () {
                  // context.pushNamed(Routes.addressesScreen);
-                  context.pushNamed(Routes.notificationsScreen);
+                  context.pushNamed(Routes.profileScreen);
                 },
                 leading: Container(
                   width: 48.w,

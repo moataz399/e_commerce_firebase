@@ -21,6 +21,7 @@ class AppTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String?) validator;
   final Function(String?)? onChanged;
+
   final Function()? onTap;
 
   const AppTextFormField({
@@ -28,7 +29,7 @@ class AppTextFormField extends StatelessWidget {
     this.contentPadding,
     this.textStyle,
     this.focusedBorder,
-     this.readOnly    ,
+    this.readOnly,
     this.height,
     this.enabledBorder,
     this.inputTextStyle,
@@ -49,9 +50,8 @@ class AppTextFormField extends StatelessWidget {
     return SizedBox(
       height: height ?? 80.h,
       child: TextFormField(
-        onChanged: (String value)=> onChanged!(value),
-        readOnly: readOnly?? false,
-        onTap:onTap,
+        readOnly: readOnly ?? false,
+        onTap: onTap,
         controller: controller,
         decoration: InputDecoration(
           isDense: true,
@@ -100,6 +100,7 @@ class AppTextFormField extends StatelessWidget {
         validator: (value) {
           return validator(value);
         },
+        onChanged: onChanged??(value) => (value){},
       ),
     );
   }
