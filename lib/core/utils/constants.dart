@@ -1,5 +1,6 @@
 import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
+import 'package:e_commerce_firebase/features/account/data/models/list_tile_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/home/data/models/product_model.dart';
@@ -27,6 +28,20 @@ class Constants {
       description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry, lorem Ipsum is simply dummy text",
     ),
+  ];
+  static List<ListTileModel> listTileModel = [
+    ListTileModel(
+        title: "Name",
+        subtitle: "moataz mohamed",
+        img: "assets/images/person2.png"),
+    ListTileModel(
+        title: "Email",
+        subtitle: "moataz_mohamed@gmail.com",
+        img: "assets/images/email.png"),
+    ListTileModel(
+        title: "Phone Number",
+        subtitle: "01154284595",
+        img: "assets/images/phone.png"),
   ];
 
   static List<ProductModel> productList = [
@@ -190,6 +205,7 @@ enum OrderStatus {
   delivered,
   canceled,
 }
+
 Color changeColor(status) {
   if (status == OrderStatus.pending) {
     return AppColors.lightOrange;

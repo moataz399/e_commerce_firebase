@@ -47,7 +47,7 @@ class OffersScreen extends StatelessWidget {
                 mainAxisSpacing: 16.h,
                 crossAxisSpacing: 16.w,
                 clipBehavior: Clip.none,
-                childAspectRatio: 1 / 1.2,
+                childAspectRatio: 1 / 1.2.h,
                 children: List.generate(
                   10,
                   (index) => ProductListItem(

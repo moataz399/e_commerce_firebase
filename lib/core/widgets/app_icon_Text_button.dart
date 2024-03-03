@@ -6,9 +6,12 @@ import '../helpers/spacing.dart';
 class AppIconTextButton extends StatelessWidget {
   final double? borderRadius;
   final Color? backgroundColor;
+  final Color? imgColor;
   final double? horizontalPadding;
   final double? verticalPadding;
   final double? buttonWidth;
+  final double? imgHeight;
+  final double? imgWidth;
   final double? buttonHeight;
   final String buttonText;
   final TextStyle textStyle;
@@ -20,6 +23,9 @@ class AppIconTextButton extends StatelessWidget {
     required this.img,
     this.borderRadius,
     this.backgroundColor,
+    this.imgHeight,
+    this.imgWidth,
+    this.imgColor,
     this.horizontalPadding,
     this.verticalPadding,
     this.buttonHeight,
@@ -38,8 +44,8 @@ class AppIconTextButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(borderRadius ?? 16.0),
               side: const BorderSide(color: Color(0xFFF4F5F6))),
         ),
-        backgroundColor: const MaterialStatePropertyAll(
-          Colors.transparent,
+        backgroundColor: MaterialStatePropertyAll(
+          backgroundColor ?? Colors.transparent,
         ),
         padding: MaterialStateProperty.all<EdgeInsets>(
           EdgeInsets.symmetric(
@@ -55,7 +61,12 @@ class AppIconTextButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(img),
+          Image.asset(
+            img,
+            color: imgColor,
+            height: imgHeight,
+            width: imgWidth,
+          ),
           horizontalSpace(10.w),
           Text(
             buttonText,

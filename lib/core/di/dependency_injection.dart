@@ -1,12 +1,13 @@
 import 'package:e_commerce_firebase/core/helpers/cache_helper.dart';
+import 'package:e_commerce_firebase/features/auth/login/data/repo/login_repo.dart';
+import 'package:e_commerce_firebase/features/auth/login/logic/cubit/login_cubit.dart';
+import 'package:e_commerce_firebase/features/auth/register/data/repo/register_repo.dart';
+import 'package:e_commerce_firebase/features/auth/register/logic/register_cubit.dart';
 import 'package:e_commerce_firebase/features/home/data/repos/home_repo.dart';
 import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
-import 'package:e_commerce_firebase/features/register/logic/register_cubit.dart';
-import 'package:e_commerce_firebase/features/login/data/repo/login_repo.dart';
-import 'package:e_commerce_firebase/features/login/logic/cubit/login_cubit.dart';
+
 import 'package:get_it/get_it.dart';
 
-import '../../features/register/data/repo/register_repo.dart';
 
 final getIt = GetIt.instance;
 
