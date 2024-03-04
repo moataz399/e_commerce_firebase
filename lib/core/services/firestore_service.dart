@@ -10,6 +10,15 @@ class FireStoreServices {
   static final instance = FireStoreServices._();
 
   // set = add or update
+
+  Future<List<QueryDocumentSnapshot>> getCollectionData(
+      {required String collectionName}) async {
+    final response = await _fireStore.collection(collectionName).get();
+
+    print(response);
+    return response.docs;
+  }
+
   Future<void> setData(
       {required String path, required Map<String, dynamic> data}) async {
     final reference = _fireStore.doc(path);

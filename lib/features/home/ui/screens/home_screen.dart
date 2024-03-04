@@ -3,8 +3,10 @@ import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_form_field.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
+import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/utils/constants.dart';
@@ -17,6 +19,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = HomeCubit.get(context);
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -47,17 +50,17 @@ class HomeScreen extends StatelessWidget {
               verticalSpace(24),
               ProductsSection(
                 headerTitle: "Products",
-                productModel: Constants.productList,
+                productModel: cubit.productList,
               ),
               verticalSpace(16),
               ProductsSection(
                 headerTitle: "Flash Offers",
-                productModel: Constants.flashOffersList,
+                productModel: cubit.productList,
               ),
               verticalSpace(16),
               ProductsSection(
                 headerTitle: "Best Seller",
-                productModel: Constants.bestSellerList,
+                productModel: cubit.productList,
               ),
             ],
           ),

@@ -22,7 +22,7 @@ class ProductsSection extends StatelessWidget {
         ),
         verticalSpace(16),
         SizedBox(
-          height: 204.h,
+          height:220.h,
           child: ListView.builder(
               clipBehavior: Clip.none,
               itemCount: productModel.length,

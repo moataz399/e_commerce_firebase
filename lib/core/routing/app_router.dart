@@ -36,9 +36,10 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
-        ); case Routes.editProfileScreen:
+        );
+      case Routes.editProfileScreen:
         return MaterialPageRoute(
-          builder: (_) =>  EditProfileScreen(),
+          builder: (_) => EditProfileScreen(),
         );
       case Routes.profileScreen:
         return MaterialPageRoute(
@@ -74,8 +75,11 @@ class AppRouter {
         final ProductModel productModel = args["productModel"];
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => ProductDetailsScreen(
-            productModel: productModel,
+          builder: (_) => BlocProvider.value(
+            value:  getIt<HomeCubit>(),
+            child: ProductDetailsScreen(
+              productModel: productModel,
+            ),
           ),
         );
       case Routes.categoryDetailsScreen:
@@ -102,7 +106,7 @@ class AppRouter {
       case Routes.appLayout:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-              create: (context) => getIt<HomeCubit>(),
+              create: (context) => getIt<HomeCubit>()..getProductList(),
               child: const AppLayout()),
         );
       ///////////////////////////////////////////////////

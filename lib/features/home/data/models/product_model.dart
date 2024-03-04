@@ -10,7 +10,10 @@ class ProductModel {
 
   final String image;
   final double price;
+  @JsonKey(name: "discount_value")
   final int discountValue;
+
+  @JsonKey(name: "product_id")
   final int productId;
   bool? inFav;
 

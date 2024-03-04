@@ -17,7 +17,7 @@ class RecommendationProducts extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 204.h,
+          height: 220.h,
           child: ListView.builder(
               clipBehavior: Clip.none,
               itemCount: productModel.length,

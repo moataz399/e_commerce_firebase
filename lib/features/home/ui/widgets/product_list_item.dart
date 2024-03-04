@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
@@ -34,6 +35,9 @@ class _ProductListItemState extends State<ProductListItem> {
                   arguments: {"productModel": widget.productModel});
             },
             child: Container(
+              padding: EdgeInsets.only(
+                left: 10.w,
+              ),
               width: 164.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.r),
@@ -47,99 +51,91 @@ class _ProductListItemState extends State<ProductListItem> {
                   ),
                 ],
               ),
-              child: Padding(
-                padding: EdgeInsets.only(
-                  left: 10.w,
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        widget.productModel.discountValue == 0
-                            ? Container()
-                            : Container(
-                                padding: const EdgeInsets.symmetric(),
-                                width: 37.w,
-                                height: 24.h,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4.r),
-                                  color: const Color(0xFFFF6264),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "%${widget.productModel.discountValue}",
-                                    style: TextStyles.font12WhiteSemiBold,
-                                  ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      widget.productModel.discountValue == 0
+                          ? Container()
+                          : Container(
+                              padding: const EdgeInsets.symmetric(),
+                              width: 37.w,
+                              height: 24.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4.r),
+                                color: const Color(0xFFFF6264),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "%${widget.productModel.discountValue}",
+                                  style: TextStyles.font12WhiteSemiBold,
                                 ),
                               ),
-                        IconButton(
-                          padding: EdgeInsets.zero,
-                          onPressed: () {
-                            widget.productModel.inFav =
-                                !widget.productModel.inFav!;
-                            log(widget.productModel.inFav.toString());
+                            ),
+                      IconButton(
+                        iconSize: 24,
+                        padding: EdgeInsets.zero,
+                        onPressed: () {
+                          widget.productModel.inFav =
+                              !widget.productModel.inFav!;
+                          log(widget.productModel.inFav.toString());
+                          setState(() {});
+                          if (widget.productModel.inFav == true) {
+                            Constants.favList.add(widget.productModel);
                             setState(() {});
-                            if (widget.productModel.inFav == true) {
-                              Constants.favList.add(widget.productModel);
-                              setState(() {});
-                            } else {
-                              Constants.favList.remove(widget.productModel);
-                              setState(() {});
-                            }
-                          },
-                          icon: widget.productModel.inFav == true
-                              ? Icon(Icons.favorite,
-                                  size: 24, color: AppColors.mainGreen)
-                              : Icon(Icons.favorite_border_outlined,
-                                  size: 24, color: Colors.black),
-                        )
-                      ],
+                          } else {
+                            Constants.favList.remove(widget.productModel);
+                            setState(() {});
+                          }
+                        },
+                        icon: widget.productModel.inFav == true
+                            ? Icon(Icons.favorite,
+                                size: 24, color: AppColors.mainGreen)
+                            : Icon(Icons.favorite_border_outlined,
+                                size: 24, color: Colors.black),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    child: Image.network(
+                      height: 90.h,
+                      widget.productModel.image,
+                      fit: BoxFit.fill,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      width: 125.w,
-                      height: 73.h,
-                      child: Image.asset(
-                        widget.productModel.image ?? "",
-                        fit: BoxFit.cover,
-                      ),
+                  ),
+                  verticalSpace(13),
+                  Text(
+                    widget.productModel.title ?? "",
+                    style: TextStyles.font14BlackRegular.copyWith(
+                      color: const Color(0xFF01221D),
                     ),
-                    verticalSpace(13),
-                    Text(
-                      widget.productModel.title ?? "",
-                      style: TextStyles.font14BlackRegular.copyWith(
-                        color: const Color(0xFF01221D),
-                      ),
-                    ),
-                    verticalSpace(6),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        widget.productModel.discountValue == 0
-                            ? Text("\$${widget.productModel.price.toString()}",
-                                style: TextStyles.font14BlackBold)
-                            : Text(
-                                "\$${calcPrice(productPrice: widget.productModel.price, discountValue: widget.productModel.discountValue)}",
-                                style: TextStyles.font14BlackBold),
-                        horizontalSpace(6.w),
-                        widget.productModel.discountValue == 0
-                            ? Container()
-                            : Text(
-                                "\$${widget.productModel.price}",
-                                style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w400,
-                                    decoration: TextDecoration.lineThrough),
-                              ),
-                      ],
-                    ),
-                  ],
-                ),
+                  ),
+                  verticalSpace(6),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      widget.productModel.discountValue == 0
+                          ? Text("\$${widget.productModel.price.toString()}",
+                              style: TextStyles.font14BlackBold)
+                          : Text(
+                              "\$${calcPrice(productPrice: widget.productModel.price, discountValue: widget.productModel.discountValue)}",
+                              style: TextStyles.font14BlackBold),
+                      horizontalSpace(6.w),
+                      widget.productModel.discountValue == 0
+                          ? Container()
+                          : Text(
+                              "\$${widget.productModel.price}",
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w400,
+                                  decoration: TextDecoration.lineThrough),
+                            ),
+                    ],
+                  ),
+                ],
               ),
             ),
           );
