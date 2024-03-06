@@ -10,7 +10,7 @@ class ChangeBottomNav extends HomeState {}
 class ProductLoading extends HomeState {}
 
 class GetProductSuccess extends HomeState {
-  List<ProductModel> productList;
+  final List<ProductModel> productList;
 
   GetProductSuccess({required this.productList});
 }
@@ -21,10 +21,24 @@ class GetProductFailed extends HomeState {
   GetProductFailed({required this.error});
 }
 
+class OffersLoading extends HomeState {}
+
+class GetOffersSuccess extends HomeState {
+ final  List<ProductModel> offersList;
+
+  GetOffersSuccess({required this.offersList});
+}
+
+class GetOffersFailed extends HomeState {
+  final String error;
+
+  GetOffersFailed({required this.error});
+}
+
 class CategoriesLoading extends HomeState {}
 
 class GetCategoriesSuccess extends HomeState {
-  List<CategoriesModel> productList;
+ final  List<CategoriesModel> productList;
 
   GetCategoriesSuccess({required this.productList});
 }

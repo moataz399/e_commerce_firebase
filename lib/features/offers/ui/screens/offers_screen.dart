@@ -50,9 +50,9 @@ class OffersScreen extends StatelessWidget {
                 clipBehavior: Clip.none,
                 childAspectRatio: 1 / 1.2.h,
                 children: List.generate(
-                  cubit.productList.length,
+                  cubit.offersList.length,
                   (index) => ProductListItem(
-                    productModel: cubit.productList[index],
+                    productModel: cubit.offersList[index],
                   ),
                 ),
               )
