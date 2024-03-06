@@ -74,7 +74,7 @@ class ForgotPasswordScreen extends StatelessWidget {
         .forgetPasswordFormKey
         .currentState!
         .validate()) {
-      context.read<LoginCubit>().sendEmailResetPasswrd();
+      context.read<LoginCubit>().sendEmailResetPassword();
     }
   }
 }

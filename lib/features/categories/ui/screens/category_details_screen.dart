@@ -9,12 +9,16 @@ import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../home/data/models/product_model.dart';
 
 class CategoryDetailsScreen extends StatelessWidget {
-  const CategoryDetailsScreen({super.key});
+  const CategoryDetailsScreen(
+      {super.key, required this.items, required this.title});
+
+  final List<ProductModel> items;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Hats'),
+      appBar: CustomAppBar(title: title),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -44,17 +48,9 @@ class CategoryDetailsScreen extends StatelessWidget {
                   clipBehavior: Clip.none,
                   childAspectRatio: 1 / 1.2.h,
                   children: List.generate(
-                    10,
+                    items.length,
                     (index) => ProductListItem(
-                      productModel: ProductModel(
-                        discountValue: 0,
-                        image: "assets/images/hat.png",
-                        title: "Product",
-                        description:
-                            "Find both comfort and sophisticated style among our selection of furniture. Visit AZ furniture store to browse more and buy.  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui...",
-                        price: 4,
-                        productId: 1,
-                      ),
+                      productModel: items[index],
                     ),
                   ),
                 )

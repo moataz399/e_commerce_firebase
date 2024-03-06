@@ -46,7 +46,7 @@ class _BannersSliderState extends State<BannersSlider> {
           options: CarouselOptions(
             height: 134.h,
             initialPage: 0,
-            autoPlay: true,
+            autoPlay: false,
             viewportFraction: 1.0,
             reverse: false,
             autoPlayAnimationDuration: const Duration(seconds: 2),

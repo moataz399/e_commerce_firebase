@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/account_screen.dart';
+import 'package:e_commerce_firebase/features/categories/data/models/categories_model.dart';
 import 'package:e_commerce_firebase/features/categories/ui/screens/categories_screen.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 import 'package:e_commerce_firebase/features/home/data/repos/home_repo.dart';
@@ -36,6 +37,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   List<ProductModel> productList = [];
+  List<CategoriesModel> categoriesList = [];
 
   Future getProductList() async {
     emit(ProductLoading());
@@ -45,7 +47,27 @@ class HomeCubit extends Cubit<HomeState> {
       emit(GetProductSuccess(productList: productList));
     } catch (e) {
       print(e.toString());
-      emit(GetProductFailed());
+      emit(
+        GetProductFailed(
+          error: e.toString(),
+        ),
+      );
+    }
+  }
+
+  Future getCategoriesList() async {
+    emit(CategoriesLoading());
+    try {
+      var response = await _homeRepo.getCategoriesList();
+      categoriesList.addAll(response);
+      emit(GetCategoriesSuccess(productList: categoriesList));
+    } catch (e) {
+      print(e.toString());
+      emit(
+        GetCategoriesFailed(
+          error: e.toString(),
+        ),
+      );
     }
   }
 }

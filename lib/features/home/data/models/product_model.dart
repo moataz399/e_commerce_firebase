@@ -9,7 +9,7 @@ class ProductModel {
   final String description;
 
   final String image;
-  final double price;
+  final num price;
   @JsonKey(name: "discount_value")
   final int discountValue;
 

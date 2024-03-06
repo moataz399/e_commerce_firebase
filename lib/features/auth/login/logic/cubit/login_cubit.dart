@@ -49,7 +49,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   //! Forget Password
-  void sendEmailResetPasswrd() async {
+  void sendEmailResetPassword() async {
     emit(SendEmailResetPasswordLoadingState());
     try {
       await _repo.sendRmailResetPassord(email: email.text.trim());

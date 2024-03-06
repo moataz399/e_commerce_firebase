@@ -10,7 +10,7 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
       title: json['title'] as String,
       description: json['description'] as String,
       image: json['image'] as String,
-      price: (json['price'] as num).toDouble(),
+      price: json['price'] as num,
       productId: json['product_id'] as int,
       discountValue: json['discount_value'] as int,
       inFav: json['inFav'] as bool? ?? false,
