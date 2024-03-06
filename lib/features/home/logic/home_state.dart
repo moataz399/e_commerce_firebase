@@ -15,4 +15,22 @@ class GetProductSuccess extends HomeState {
   GetProductSuccess({required this.productList});
 }
 
-class GetProductFailed extends HomeState {}
+class GetProductFailed extends HomeState {
+  final String error;
+
+  GetProductFailed({required this.error});
+}
+
+class CategoriesLoading extends HomeState {}
+
+class GetCategoriesSuccess extends HomeState {
+  List<CategoriesModel> productList;
+
+  GetCategoriesSuccess({required this.productList});
+}
+
+class GetCategoriesFailed extends HomeState {
+  final String error;
+
+  GetCategoriesFailed({required this.error});
+}

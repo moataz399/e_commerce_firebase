@@ -2,14 +2,11 @@ import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_form_field.dart';
-import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routing/routes.dart';
-import '../../../../core/utils/constants.dart';
 import '../widgets/banner_widget.dart';
 import '../../../categories/ui/widgets/categories_section.dart';
 import '../widgets/product_section.dart';
@@ -25,6 +22,7 @@ class HomeScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               verticalSpace(32),
               AppTextFormField(
@@ -46,7 +44,9 @@ class HomeScreen extends StatelessWidget {
               verticalSpace(16),
               const BannersSlider(),
               verticalSpace(24),
-              const CategoriesSection(),
+              CategoriesSection(
+                categoryList: cubit.categoriesList,
+              ),
               verticalSpace(24),
               ProductsSection(
                 headerTitle: "Products",

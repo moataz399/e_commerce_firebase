@@ -76,15 +76,21 @@ class AppRouter {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => BlocProvider.value(
-            value:  getIt<HomeCubit>(),
+            value: getIt<HomeCubit>(),
             child: ProductDetailsScreen(
               productModel: productModel,
             ),
           ),
         );
       case Routes.categoryDetailsScreen:
+        final args = settings.arguments as Map<String, dynamic>;
+        final List<ProductModel> items = args["items"];
+        final String title = args["title"];
         return MaterialPageRoute(
-          builder: (_) => const CategoryDetailsScreen(),
+          builder: (_) => CategoryDetailsScreen(
+            items: items,
+            title: title,
+          ),
         );
 
       case Routes.productsScreen:
@@ -106,7 +112,7 @@ class AppRouter {
       case Routes.appLayout:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-              create: (context) => getIt<HomeCubit>()..getProductList(),
+              create: (context) => getIt<HomeCubit>()..getProductList()..getCategoriesList(),
               child: const AppLayout()),
         );
       ///////////////////////////////////////////////////
