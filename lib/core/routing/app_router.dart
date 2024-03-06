@@ -112,7 +112,7 @@ class AppRouter {
       case Routes.appLayout:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-              create: (context) => getIt<HomeCubit>()..getProductList()..getCategoriesList(),
+              create: (context) => getIt<HomeCubit>()..getOffersList()..getProductList()..getCategoriesList(),
               child: const AppLayout()),
         );
       ///////////////////////////////////////////////////

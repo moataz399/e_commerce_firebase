@@ -49,4 +49,24 @@ class HomeRepo {
       throw e.toString();
     }
   }
+
+  Future<List<ProductModel>> getOffersList() async {
+    try {
+      var list = await _service.getCollectionData(collectionName: "offers");
+
+      var response = list.map((e) {
+        return ProductModel.fromJson(e.data() as Map<String, dynamic>);
+      }).toList();
+
+      return response;
+    } on FirebaseAuthException catch (e) {
+      throw AppFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 }

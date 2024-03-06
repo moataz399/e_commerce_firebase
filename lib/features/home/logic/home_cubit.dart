@@ -9,9 +9,7 @@ import 'package:e_commerce_firebase/features/offers/ui/screens/offers_screen.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-
 import '../../account/ui/screens/my_orders/screens/my_orders_screen.dart';
-
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -37,6 +35,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   List<ProductModel> productList = [];
+  List<ProductModel> offersList = [];
   List<CategoriesModel> categoriesList = [];
 
   Future getProductList() async {
@@ -65,6 +64,22 @@ class HomeCubit extends Cubit<HomeState> {
       print(e.toString());
       emit(
         GetCategoriesFailed(
+          error: e.toString(),
+        ),
+      );
+    }
+  }
+
+  Future getOffersList() async {
+    emit(OffersLoading());
+    try {
+      var response = await _homeRepo.getOffersList();
+      offersList.addAll(response);
+      emit(GetOffersSuccess(offersList: offersList));
+    } catch (e) {
+      print(e.toString());
+      emit(
+        GetOffersFailed(
           error: e.toString(),
         ),
       );

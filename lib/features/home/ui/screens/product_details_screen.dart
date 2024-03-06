@@ -1,7 +1,6 @@
 import 'package:e_commerce_firebase/core/functions/calculate_price.dart';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
-import 'package:e_commerce_firebase/core/utils/constants.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_button.dart';
 import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +76,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   productModel.discountValue == 0
                       ? const Text("")
                       : Text(
-                          productModel.price.toString(),
+                          "\$${productModel.price.toString()}",
                           style: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
