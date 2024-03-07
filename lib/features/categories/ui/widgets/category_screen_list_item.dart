@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
+import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/features/categories/data/models/categories_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,10 +44,15 @@ class CategoryScreenListItem extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12.r),
               ),
-              child: Image.network(
-                categoryModel.image,
+              child: CachedNetworkImage(
+                height: 100.h,
                 width: 100.w,
-                height: 100,
+                imageUrl:categoryModel.image,
+                placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                  color: AppColors.mainGreen,
+                )),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
                 fit: BoxFit.fill,
               ),
             ),

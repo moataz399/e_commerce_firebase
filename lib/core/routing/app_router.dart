@@ -47,7 +47,7 @@ class AppRouter {
         );
       case Routes.changePasswordScreen:
         return MaterialPageRoute(
-          builder: (_) => ChangePasswordScreen(),
+          builder: (_) => const ChangePasswordScreen(),
         );
       case Routes.notificationsScreen:
         return MaterialPageRoute(
@@ -68,7 +68,10 @@ class AppRouter {
         );
       case Routes.favouriteScreen:
         return MaterialPageRoute(
-          builder: (_) => FavouriteScreen(),
+          builder: (_) => BlocProvider.value(
+            value: getIt<HomeCubit>(),
+            child: const FavouriteScreen(),
+          ),
         );
       case Routes.productsDetailsScreen:
         final args = settings.arguments as Map<String, dynamic>;
@@ -87,9 +90,12 @@ class AppRouter {
         final List<ProductModel> items = args["items"];
         final String title = args["title"];
         return MaterialPageRoute(
-          builder: (_) => CategoryDetailsScreen(
-            items: items,
-            title: title,
+          builder: (_) => BlocProvider.value(
+            value: getIt<HomeCubit>(),
+            child: CategoryDetailsScreen(
+              items: items,
+              title: title,
+            ),
           ),
         );
 
@@ -112,7 +118,10 @@ class AppRouter {
       case Routes.appLayout:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-              create: (context) => getIt<HomeCubit>()..getOffersList()..getProductList()..getCategoriesList(),
+              create: (context) => getIt<HomeCubit>()
+                ..getOffersList()
+                ..getProductList()
+                ..getCategoriesList(),
               child: const AppLayout()),
         );
       ///////////////////////////////////////////////////

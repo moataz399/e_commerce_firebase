@@ -46,7 +46,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                   mainAxisSpacing: 16.h,
                   crossAxisSpacing: 16.w,
                   clipBehavior: Clip.none,
-                  childAspectRatio: 1 / 1.2.h,
+                  childAspectRatio: (1 / 1.25).h,
                   children: List.generate(
                     items.length,
                     (index) => ProductListItem(

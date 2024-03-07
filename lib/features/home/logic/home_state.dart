@@ -48,3 +48,14 @@ class GetCategoriesFailed extends HomeState {
 
   GetCategoriesFailed({required this.error});
 }
+class AddedToFav extends HomeState {}
+class IsProductFavorite extends HomeState {}
+class DeletedFromFav extends HomeState {}
+class CheckFavoriteStatus extends HomeState {}
+class ToggleFav extends HomeState {}
+
+class GetFavSuccess extends HomeState {
+  final  List<ProductModel> favList;
+
+  GetFavSuccess({required this.favList});
+}

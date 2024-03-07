@@ -1,22 +1,24 @@
-import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
+import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/functions/calculate_price.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
-import '../../../../core/utils/constants.dart';
 
 class ProductListItem extends StatefulWidget {
-  const ProductListItem(
-      {super.key, required this.productModel, this.sameProductId});
-
+  const ProductListItem({
+    Key? key,
+    required this.productModel,
+    this.sameProductId,
+  }) : super(key: key);
   final ProductModel productModel;
   final int? sameProductId;
 
@@ -25,6 +27,43 @@ class ProductListItem extends StatefulWidget {
 }
 
 class _ProductListItemState extends State<ProductListItem> {
+  bool isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    checkFavoriteStatus();
+  }
+
+  void checkFavoriteStatus() async {
+    bool result =
+        await context.read<HomeCubit>().isProductFavorite(widget.productModel);
+    if (mounted) {
+      setState(() {
+        isFavorite = result;
+      });
+    }
+  }
+
+  Future<void> toggleFavoriteStatus() async {
+    if (isFavorite) {
+      // If currently a favorite, remove it
+
+      await context
+          .read<HomeCubit>()
+          .removeFavoriteProduct(widget.productModel);
+    } else {
+      // If not a favorite, add it
+      await context.read<HomeCubit>().addFavoriteProduct(widget.productModel);
+    }
+    // Then update the state to reflect the change
+    if (mounted) {
+      setState(() {
+        isFavorite = !isFavorite;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return widget.productModel.productId == widget.sameProductId
@@ -35,9 +74,7 @@ class _ProductListItemState extends State<ProductListItem> {
                   arguments: {"productModel": widget.productModel});
             },
             child: Container(
-              padding: EdgeInsets.only(
-                left: 10.w,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
               width: 164.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.r),
@@ -74,40 +111,37 @@ class _ProductListItemState extends State<ProductListItem> {
                                 ),
                               ),
                             ),
-                      IconButton(
-                        iconSize: 24,
-                        padding: EdgeInsets.zero,
-                        onPressed: () {
-                          widget.productModel.inFav =
-                              !widget.productModel.inFav!;
-                          log(widget.productModel.inFav.toString());
-                          setState(() {});
-                          if (widget.productModel.inFav == true) {
-                            Constants.favList.add(widget.productModel);
-                            setState(() {});
-                          } else {
-                            Constants.favList.remove(widget.productModel);
-                            setState(() {});
-                          }
+                      InkWell(
+                        onTap: () async {
+                          await toggleFavoriteStatus();
                         },
-                        icon: widget.productModel.inFav == true
-                            ? Icon(Icons.favorite,
-                                size: 24, color: AppColors.mainGreen)
-                            : Icon(Icons.favorite_border_outlined,
-                                size: 24, color: Colors.black),
+                        child: Icon(
+                          isFavorite
+                              ? Icons.favorite
+                              : Icons.favorite_border_outlined,
+                          size: 24,
+                          color:
+                              isFavorite ? AppColors.mainGreen : Colors.black,
+                        ),
                       )
                     ],
                   ),
                   SizedBox(
-                    child: Image.network(
-                      height: 90.h,
-                      widget.productModel.image,
+                    child: CachedNetworkImage(
+                      height: 110.h,
+                      imageUrl: widget.productModel.image,
+                      placeholder: (context, url) => const Center(
+                          child: CircularProgressIndicator(
+                        color: AppColors.mainGreen,
+                      )),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                       fit: BoxFit.fill,
                     ),
                   ),
                   verticalSpace(13),
                   Text(
-                    widget.productModel.title ?? "",
+                    widget.productModel.title,
                     style: TextStyles.font14BlackRegular.copyWith(
                       color: const Color(0xFF01221D),
                     ),
