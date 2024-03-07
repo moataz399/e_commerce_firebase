@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/routing/routes.dart';
+import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/features/categories/data/models/categories_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,15 +60,19 @@ class CategoriesSection extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 43.w,
                               height: 36.h,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image:
-                                      NetworkImage(categoryList[index].image),
-                                  fit: BoxFit.fill,
-                                ),
+                              child: CachedNetworkImage(
+                                height: 90.h,
+                                imageUrl: categoryList[index].image,
+                                placeholder: (context, url) => const Center(
+                                    child: CircularProgressIndicator(
+                                  color: AppColors.mainGreen,
+                                )),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                                fit: BoxFit.fill,
                               ),
                             ),
                           ],

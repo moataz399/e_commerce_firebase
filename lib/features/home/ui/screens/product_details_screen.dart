@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_firebase/core/functions/calculate_price.dart';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
+import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_button.dart';
 import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
@@ -33,8 +35,13 @@ class ProductDetailsScreen extends StatelessWidget {
                   horizontal: 60.w,
                 ),
                 width: double.infinity,
-                child: Image.network(
-                  productModel.image,
+                child: CachedNetworkImage(
+                  imageUrl: productModel.image,
+                  placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(
+                    color: AppColors.mainGreen,
+                  )),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.cover,
                 ),
               ),
