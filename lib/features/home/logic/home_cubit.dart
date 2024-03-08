@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_firebase/core/exceptions/firebase_exceptions.dart';
 import 'package:e_commerce_firebase/core/exceptions/platform_exceptions.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/account_screen.dart';
+import 'package:e_commerce_firebase/features/cart/ui/screens/cart_screen.dart';
 import 'package:e_commerce_firebase/features/categories/data/models/categories_model.dart';
 import 'package:e_commerce_firebase/features/categories/ui/screens/categories_screen.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
@@ -27,7 +28,7 @@ class HomeCubit extends Cubit<HomeState> {
   List screens = const [
     HomeScreen(),
     CategoriesScreen(),
-    MyOrdersScreen(),
+    CartScreen(),
     OffersScreen(),
     AccountScreen(),
   ];
