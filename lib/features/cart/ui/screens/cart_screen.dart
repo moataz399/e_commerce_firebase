@@ -1,7 +1,8 @@
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
-import 'package:e_commerce_firebase/features/cart/ui/widgets/cart_item.dart';
-import 'package:e_commerce_firebase/features/cart/ui/widgets/cart_title.dart';
 import 'package:flutter/material.dart';
+import '../widgets/cart_coupon_and_order_summry.dart';
+import '../widgets/cart_item_list.dart';
+import '../widgets/cart_title.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -13,11 +14,13 @@ class CartScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //! Cart Title
+            //! Cart ,Title
             const CartTitle(),
             verticalSpace(40),
             //! Carts,
-            const CartItem(),
+            const CartItemList(),
+            //! Add Coupon & Order Summry,
+            const CartCouponAndOrderSummry()
           ],
         ),
       ),
