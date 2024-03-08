@@ -1,11 +1,6 @@
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
-import 'package:e_commerce_firebase/core/theming/colors.dart';
-import 'package:e_commerce_firebase/core/theming/text_styles.dart';
-import 'package:e_commerce_firebase/core/utils/app_strings.dart';
-import 'package:e_commerce_firebase/core/widgets/app_text_button.dart';
 import 'package:e_commerce_firebase/features/cart/ui/widgets/cart_checkout.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/cart_coupon_and_order_summry.dart';
 import '../widgets/cart_item_list.dart';
 import '../widgets/cart_title.dart';
