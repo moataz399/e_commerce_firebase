@@ -1,3 +1,4 @@
+import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -9,6 +10,8 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = HomeCubit.get(context);
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -20,7 +23,7 @@ class CategoriesScreen extends StatelessWidget {
                 "Categories",
                 style: TextStyles.font18BlackBoldSemiBold,
               ),
-              verticalSpace(16.h),
+              verticalSpace(16),
               GridView.count(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -28,10 +31,12 @@ class CategoriesScreen extends StatelessWidget {
                 mainAxisSpacing: 16.h,
                 crossAxisSpacing: 16.w,
                 clipBehavior: Clip.none,
-                childAspectRatio: 1 / 1.2,
+                childAspectRatio: 1 / 1.2.h,
                 children: List.generate(
-                  10,
-                  (index) => const CategoryScreenListItem(),
+                  cubit.categoriesList.length,
+                  (index) => CategoryScreenListItem(
+                    categoryModel: cubit.categoriesList[index],
+                  ),
                 ),
               )
             ],

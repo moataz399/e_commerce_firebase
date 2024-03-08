@@ -64,7 +64,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         );
                       }),
                 ),
-                verticalSpace(16.h),
+                verticalSpace(16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

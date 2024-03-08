@@ -1,10 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/routing/routes.dart';
+import 'package:e_commerce_firebase/core/theming/colors.dart';
+import 'package:e_commerce_firebase/features/categories/data/models/categories_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoriesSection extends StatelessWidget {
-  const CategoriesSection({super.key});
+  const CategoriesSection({super.key, required this.categoryList});
+
+  final List<CategoriesModel> categoryList;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,7 @@ class CategoriesSection extends StatelessWidget {
       child: ListView.builder(
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
-          itemCount: 10,
+          itemCount: categoryList.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             return Padding(
@@ -25,35 +30,49 @@ class CategoriesSection extends StatelessWidget {
                 height: 86.h,
                 child: GestureDetector(
                   onTap: () {
-                    context.pushNamed(Routes.categoryDetailsScreen);
+                    context.pushNamed(Routes.categoryDetailsScreen, arguments: {
+                      "items": categoryList[index].items,
+                      "title": categoryList[index].title,
+                    });
                   },
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(
                             horizontal: 10.w, vertical: 13.h),
-                        decoration: ShapeDecoration(
-                          color: const Color(0xFFF4F5F6),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.r),
-                          ),
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0xFF1B1956).withOpacity(.04),
+                              spreadRadius: 0,
+                              blurRadius: 18,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12.r),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 43.w,
                               height: 36.h,
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage("assets/images/hat.png"),
-                                  fit: BoxFit.fill,
-                                ),
+                              child: CachedNetworkImage(
+                                height: 90.h,
+                                imageUrl: categoryList[index].image,
+                                placeholder: (context, url) => const Center(
+                                    child: CircularProgressIndicator(
+                                  color: AppColors.mainGreen,
+                                )),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                                fit: BoxFit.fill,
                               ),
                             ),
                           ],
@@ -63,7 +82,7 @@ class CategoriesSection extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: Text(
-                          'hat',
+                          categoryList[index].title,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: const Color(0xFF01040D),

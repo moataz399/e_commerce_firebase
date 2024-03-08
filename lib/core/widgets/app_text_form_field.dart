@@ -17,14 +17,19 @@ class AppTextFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final Color? backgroundColor;
   final double? height;
+  final bool? readOnly;
   final TextEditingController? controller;
   final Function(String?) validator;
+  final Function(String?)? onChanged;
+
+  final Function()? onTap;
 
   const AppTextFormField({
     super.key,
     this.contentPadding,
     this.textStyle,
     this.focusedBorder,
+    this.readOnly,
     this.height,
     this.enabledBorder,
     this.inputTextStyle,
@@ -35,7 +40,9 @@ class AppTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.backgroundColor,
     this.controller,
+    this.onTap,
     required this.validator,
+    this.onChanged,
   });
 
   @override
@@ -43,6 +50,8 @@ class AppTextFormField extends StatelessWidget {
     return SizedBox(
       height: height ?? 80.h,
       child: TextFormField(
+        readOnly: readOnly ?? false,
+        onTap: onTap,
         controller: controller,
         decoration: InputDecoration(
           isDense: true,
@@ -87,10 +96,11 @@ class AppTextFormField extends StatelessWidget {
           filled: true,
         ),
         obscureText: isObscureText ?? false,
-        style:textStyle?? TextStyles.font14DarkBlueRegular,
+        style: textStyle ?? TextStyles.font14DarkBlueRegular,
         validator: (value) {
           return validator(value);
         },
+        onChanged: onChanged??(value) => (value){},
       ),
     );
   }

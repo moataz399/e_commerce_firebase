@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../theming/text_styles.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({super.key, required this.title, this.style});
 
   final String title;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       title: Text(
         title,
-        style: TextStyles.font18BlackSemiBold,
+        style: style ?? TextStyles.font16BlackSemiBold,
       ),
     );
   }

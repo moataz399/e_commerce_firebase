@@ -9,9 +9,13 @@ class ProductModel {
   final String description;
 
   final String image;
-  final double price;
+  final num price;
+  @JsonKey(name: "discount_value")
   final int discountValue;
+
+  @JsonKey(name: "product_id")
   final int productId;
+  bool? inFav;
 
   ProductModel({
     required this.title,
@@ -19,7 +23,8 @@ class ProductModel {
     required this.image,
     required this.price,
     required this.productId,
-    required this.discountValue  ,
+    required this.discountValue,
+    this.inFav = false,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>

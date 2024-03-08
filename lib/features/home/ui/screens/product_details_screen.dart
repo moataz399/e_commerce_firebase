@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_firebase/core/functions/calculate_price.dart';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
+import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
-import 'package:e_commerce_firebase/core/utils/constants.dart';
 import 'package:e_commerce_firebase/core/widgets/app_text_button.dart';
+import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
@@ -16,6 +18,7 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = HomeCubit.get(context);
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -32,8 +35,13 @@ class ProductDetailsScreen extends StatelessWidget {
                   horizontal: 60.w,
                 ),
                 width: double.infinity,
-                child: Image.asset(
-                  productModel.image,
+                child: CachedNetworkImage(
+                  imageUrl: productModel.image,
+                  placeholder: (context, url) => const Center(
+                      child: CircularProgressIndicator(
+                    color: AppColors.mainGreen,
+                  )),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -75,7 +83,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   productModel.discountValue == 0
                       ? const Text("")
                       : Text(
-                          productModel.price.toString(),
+                          "\$${productModel.price.toString()}",
                           style: const TextStyle(
                               fontSize: 14,
                               color: Colors.grey,
@@ -114,7 +122,8 @@ class ProductDetailsScreen extends StatelessWidget {
               ),
               verticalSpace(16),
               RecommendationProducts(
-                productModel: Constants.recommendationProductList,
+                productModel: cubit.productList,
+                sameProductId: productModel.productId,
               ),
               verticalSpace(16),
               AppTextButton(
