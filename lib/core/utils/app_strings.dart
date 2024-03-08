@@ -4,11 +4,13 @@ class AppStrings {
   static const String congratulation = 'Congratulation';
   static const String appContinue = "Continue";
   static const String cart = 'Cart';
-  static const String emailSent = 'Email Sent';
   static const String addCoupon = 'Add Coupon';
-  static const String orderSummary='Order summary';
+
+  static const String emailSent = 'Email Sent';
+  static const String orderSummary = 'Order summary';
   static const String apply = 'Apply';
-    static const String subTotal = 'Sub Total';
+  static const String subTotal = 'Sub Total';
+  static const String checkout = 'Check out';
 
   static const String emailSentSuccess =
       'Please Check your inbox and verify your email.';
