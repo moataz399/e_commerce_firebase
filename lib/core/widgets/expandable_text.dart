@@ -40,55 +40,53 @@ class _ExpandableTextState extends State<ExpandableText> {
               height: 1.9,
               text: firstHalf,
               size: 14,
-              color: Color(0xff01040D),
+              color: const Color(0xff01040D),
             )
-          : Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SmallText(
-                    height: 1.8,
-                    size: 14,
-                    color: Color(0xff01040D),
-                    text:
-                        hiddenText ? '$firstHalf...' : (firstHalf + secondHalf),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        hiddenText = !hiddenText;
-                      });
-                    },
-                    child: Row(
-                      children: [
-                        SmallText(
-                          text: hiddenText ? 'Show more' : 'Show less',
-                          color: AppColors.mainGreen,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        hiddenText
-                            ? const Icon(
-                                Icons.arrow_drop_down,
-                                color: AppColors.mainGreen,
-                                size: 16,
-                              )
-                            : const Icon(
-                                Icons.arrow_drop_up,
-                                color: AppColors.mainGreen,
-                                size: 16,
-                              ),
-                      ],
-                    ),
-                  )
-                ],
+          : Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SmallText(
+                height: 1.8,
+                size: 14,
+                color: const Color(0xff01040D),
+                text:
+                    hiddenText ? '$firstHalf...' : (firstHalf + secondHalf),
               ),
-            ),
+              SizedBox(
+                height: 10.h,
+              ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    hiddenText = !hiddenText;
+                  });
+                },
+                child: Row(
+                  children: [
+                    SmallText(
+                      text: hiddenText ? 'Show more' : 'Show less',
+                      color: AppColors.mainGreen,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    hiddenText
+                        ? const Icon(
+                            Icons.arrow_drop_down,
+                            color: AppColors.mainGreen,
+                            size: 16,
+                          )
+                        : const Icon(
+                            Icons.arrow_drop_up,
+                            color: AppColors.mainGreen,
+                            size: 16,
+                          ),
+                  ],
+                ),
+              )
+            ],
+          ),
     );
   }
 }

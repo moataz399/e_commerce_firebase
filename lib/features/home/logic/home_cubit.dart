@@ -1,8 +1,8 @@
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_firebase/core/exceptions/firebase_exceptions.dart';
 import 'package:e_commerce_firebase/core/exceptions/platform_exceptions.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/account_screen.dart';
+import 'package:e_commerce_firebase/features/cart/ui/screens/cart_screen.dart';
 import 'package:e_commerce_firebase/features/categories/data/models/categories_model.dart';
 import 'package:e_commerce_firebase/features/categories/ui/screens/categories_screen.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
@@ -13,7 +13,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import '../../account/ui/screens/my_orders/screens/my_orders_screen.dart';
 
 part 'home_state.dart';
@@ -29,7 +28,7 @@ class HomeCubit extends Cubit<HomeState> {
   List screens = const [
     HomeScreen(),
     CategoriesScreen(),
-    MyOrdersScreen(),
+    CartScreen(),
     OffersScreen(),
     AccountScreen(),
   ];
