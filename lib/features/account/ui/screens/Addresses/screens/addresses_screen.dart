@@ -1,10 +1,11 @@
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
-import 'package:e_commerce_firebase/core/widgets/app_icon_Text_button.dart';
 import 'package:e_commerce_firebase/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../../core/widgets/app_icon_text_button.dart';
 
 class AddressesScreen extends StatelessWidget {
   const AddressesScreen({super.key});
@@ -12,7 +13,7 @@ class AddressesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Addresses"),
+      appBar: const CustomAppBar(title: "Addresses"),
       body: SafeArea(
           child: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 35.h),

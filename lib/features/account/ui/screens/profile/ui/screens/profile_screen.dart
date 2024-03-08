@@ -3,13 +3,14 @@ import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
-import 'package:e_commerce_firebase/core/widgets/app_icon_Text_button.dart';
 import 'package:e_commerce_firebase/core/widgets/custom_back_button.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/profile/ui/widgets/cover_and_image.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/profile/ui/widgets/profile_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../../../core/widgets/app_icon_text_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});

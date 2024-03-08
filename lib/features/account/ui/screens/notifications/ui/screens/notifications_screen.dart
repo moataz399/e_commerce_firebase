@@ -1,7 +1,6 @@
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
-import 'package:e_commerce_firebase/core/widgets/app_icon_Text_button.dart';
 import 'package:e_commerce_firebase/core/widgets/custom_app_bar.dart';
 import 'package:e_commerce_firebase/core/widgets/custom_divider.dart';
 import 'package:flutter/material.dart';

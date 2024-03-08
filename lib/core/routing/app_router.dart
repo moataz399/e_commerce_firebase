@@ -1,6 +1,6 @@
 import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
-import 'package:e_commerce_firebase/features/account/ui/screens/Addresses/screens/Addresses_screen.dart';
+import 'package:e_commerce_firebase/features/account/ui/screens/Addresses/screens/addresses_screen.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/favourites/ui/screens/favourite_screen.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/notifications/ui/screens/notifications_screen.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/profile/ui/screens/change_password_screen.dart';

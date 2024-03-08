@@ -18,9 +18,9 @@ class CartCheckout extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
       height: 140.h,
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
         color: AppColors.white,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: AppColors.lighterGray,
             blurRadius: 10,

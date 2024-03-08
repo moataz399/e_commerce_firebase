@@ -14,7 +14,7 @@ class AddAndRemoveProduct extends StatelessWidget {
       children: [
         const Icon(Icons.remove_circle_outline),
         horizontalSpace(8),
-        Text('1', style: TextStyles.font14BlackMeduim),
+        Text('1', style: TextStyles.font14BlackMedium),
         horizontalSpace(8),
         const Icon(Icons.add_circle_outline),
       ],
