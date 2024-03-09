@@ -1,4 +1,5 @@
 import 'package:e_commerce_firebase/core/helpers/cache_helper.dart';
+import 'package:e_commerce_firebase/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:e_commerce_firebase/features/auth/login/data/repo/login_repo.dart';
 import 'package:e_commerce_firebase/features/auth/login/logic/cubit/login_cubit.dart';
 import 'package:e_commerce_firebase/features/auth/register/data/repo/register_repo.dart';
@@ -13,8 +14,10 @@ final getIt = GetIt.instance;
 Future<void> setUpGetIt() async {
   // Shared Preferences
   getIt.registerLazySingleton<CacheHelper>(() => CacheHelper());
-  //! Auth Cubit & Auth Repo
 
+  //! AppLayout Cubit
+  getIt.registerFactory<AppLayoutCubit>(() => AppLayoutCubit());
+  //! Home Cubit & Home Repo
   getIt.registerLazySingleton<HomeRepo>(() => HomeRepo());
   getIt.registerLazySingleton<HomeCubit>(() => HomeCubit(getIt()));
   //! Register Cubit & Register Repo

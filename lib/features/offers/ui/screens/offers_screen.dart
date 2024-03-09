@@ -7,7 +7,7 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
-import '../../../home/ui/widgets/product_list_item.dart';
+import '../../../home/ui/widgets/product_item.dart';
 
 class OffersScreen extends StatelessWidget {
   const OffersScreen({super.key});
@@ -51,7 +51,7 @@ class OffersScreen extends StatelessWidget {
                 childAspectRatio: (1 / 1.26).h,
                 children: List.generate(
                   cubit.offersList.length,
-                  (index) => ProductListItem(
+                  (index) => ProductItem(
                     productModel: cubit.offersList[index],
                   ),
                 ),

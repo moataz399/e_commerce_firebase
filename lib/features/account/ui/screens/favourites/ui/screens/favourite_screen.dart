@@ -3,7 +3,7 @@ import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
-import 'package:e_commerce_firebase/features/home/ui/widgets/product_list_item.dart';
+import 'package:e_commerce_firebase/features/home/ui/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -73,7 +73,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                         childAspectRatio: (1 / 1.26).h,
                         children: List.generate(
                           favoriteProducts.length,
-                          (index) => ProductListItem(
+                          (index) => ProductItem(
                               key: Key(
                                   favoriteProducts[index].productId.toString()),
                               productModel: favoriteProducts[index]),

@@ -5,7 +5,9 @@ class AppStrings {
   static const String appContinue = "Continue";
   static const String cart = 'Cart';
   static const String addCoupon = 'Add Coupon';
-
+  static const String products = 'Products';
+  static const String flashOffers = 'Flash Offers';
+  static const String bestSeller = 'Best Sellers';
   static const String emailSent = 'Email Sent';
   static const String orderSummary = 'Order summary';
   static const String apply = 'Apply';

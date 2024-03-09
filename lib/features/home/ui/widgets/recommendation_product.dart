@@ -1,4 +1,4 @@
-import 'package:e_commerce_firebase/features/home/ui/widgets/product_list_item.dart';
+import 'package:e_commerce_firebase/features/home/ui/widgets/product_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,7 +26,7 @@ class RecommendationProducts extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.w),
-                  child: ProductListItem(
+                  child: ProductItem(
                     productModel: productModel[index],
                     sameProductId: sameProductId,
                   ),

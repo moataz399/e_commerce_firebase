@@ -1,5 +1,5 @@
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
-import 'package:e_commerce_firebase/features/home/ui/widgets/product_list_item.dart';
+import 'package:e_commerce_firebase/features/home/ui/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -49,7 +49,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                   childAspectRatio: (1 / 1.25).h,
                   children: List.generate(
                     items.length,
-                    (index) => ProductListItem(
+                    (index) => ProductItem(
                       productModel: items[index],
                     ),
                   ),

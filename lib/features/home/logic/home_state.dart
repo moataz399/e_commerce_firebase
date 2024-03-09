@@ -5,20 +5,18 @@ abstract class HomeState {}
 
 class HomeInitial extends HomeState {}
 
-class ChangeBottomNav extends HomeState {}
+class GetProductLoadingState extends HomeState {}
 
-class ProductLoading extends HomeState {}
-
-class GetProductSuccess extends HomeState {
+class GetProductSuccessState extends HomeState {
   final List<ProductModel> productList;
 
-  GetProductSuccess({required this.productList});
+  GetProductSuccessState({required this.productList});
 }
 
-class GetProductFailed extends HomeState {
+class GetProductFailedState extends HomeState {
   final String error;
 
-  GetProductFailed({required this.error});
+  GetProductFailedState({required this.error});
 }
 
 class OffersLoading extends HomeState {}
@@ -35,7 +33,7 @@ class GetOffersFailed extends HomeState {
   GetOffersFailed({required this.error});
 }
 
-class CategoriesLoading extends HomeState {}
+class GetCategoriesLoadingState extends HomeState {}
 
 class GetCategoriesSuccess extends HomeState {
  final  List<CategoriesModel> productList;

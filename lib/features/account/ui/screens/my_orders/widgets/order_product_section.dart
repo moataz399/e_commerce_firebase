@@ -1,7 +1,7 @@
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/core/utils/constants.dart';
-import 'package:e_commerce_firebase/features/home/ui/widgets/product_list_item.dart';
+import 'package:e_commerce_firebase/features/home/ui/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,7 +29,7 @@ class OrderProductsSection extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 16.h),
                   child: SizedBox(
                     height: 200.h,
-                    child: ProductListItem(
+                    child: ProductItem(
                         productModel: Constants.productList[index]),
                   ),
                 );

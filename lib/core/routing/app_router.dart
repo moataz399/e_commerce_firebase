@@ -6,13 +6,14 @@ import 'package:e_commerce_firebase/features/account/ui/screens/notifications/ui
 import 'package:e_commerce_firebase/features/account/ui/screens/profile/ui/screens/change_password_screen.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/profile/ui/screens/edit_profile_screen.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/profile/ui/screens/profile_screen.dart';
+import 'package:e_commerce_firebase/features/app_layout/cubit/app_layout_cubit.dart';
 import 'package:e_commerce_firebase/features/auth/login/logic/cubit/login_cubit.dart';
 import 'package:e_commerce_firebase/features/auth/login/ui/forgot_password_screen.dart';
 import 'package:e_commerce_firebase/features/auth/login/ui/login_screen.dart';
 import 'package:e_commerce_firebase/features/auth/register/logic/register_cubit.dart';
 import 'package:e_commerce_firebase/features/auth/register/ui/screens/verify_email_screen.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
-import 'package:e_commerce_firebase/features/home/ui/app_layout.dart';
+import 'package:e_commerce_firebase/features/app_layout/app_layout.dart';
 import 'package:e_commerce_firebase/features/categories/ui/screens/categories_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/product_details_screen.dart';
 import 'package:e_commerce_firebase/features/home/ui/screens/products_screen.dart';
@@ -118,10 +119,7 @@ class AppRouter {
       case Routes.appLayout:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-              create: (context) => getIt<HomeCubit>()
-                ..getOffersList()
-                ..getProductList()
-                ..getCategoriesList(),
+              create: (context) => getIt<AppLayoutCubit>(),
               child: const AppLayout()),
         );
       ///////////////////////////////////////////////////

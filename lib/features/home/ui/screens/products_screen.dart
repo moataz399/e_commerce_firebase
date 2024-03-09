@@ -1,4 +1,4 @@
-import 'package:e_commerce_firebase/features/home/ui/widgets/product_list_item.dart';
+import 'package:e_commerce_firebase/features/home/ui/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -43,7 +43,7 @@ class ProductsScreen extends StatelessWidget {
                   childAspectRatio: 1 / 1.2.h,
                   children: List.generate(
                     productModel.length,
-                    (index) => ProductListItem(
+                    (index) => ProductItem(
                       productModel: productModel[index],
                     ),
                   ),
