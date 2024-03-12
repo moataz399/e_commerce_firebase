@@ -2,6 +2,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_firebase/core/helpers/extensions.dart';
 import 'package:e_commerce_firebase/core/theming/colors.dart';
+import 'package:e_commerce_firebase/core/widgets/shimmer_effect.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,8 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/text_styles.dart';
 
-class ProductListItem extends StatefulWidget {
-  const ProductListItem({
+class ProductItem extends StatefulWidget {
+  const ProductItem({
     Key? key,
     required this.productModel,
     this.sameProductId,
@@ -23,10 +24,10 @@ class ProductListItem extends StatefulWidget {
   final int? sameProductId;
 
   @override
-  State<ProductListItem> createState() => _ProductListItemState();
+  State<ProductItem> createState() => _ProductItemState();
 }
 
-class _ProductListItemState extends State<ProductListItem> {
+class _ProductItemState extends State<ProductItem> {
   bool isFavorite = false;
 
   @override
@@ -130,12 +131,9 @@ class _ProductListItemState extends State<ProductListItem> {
                     child: CachedNetworkImage(
                       height: 110.h,
                       imageUrl: widget.productModel.image,
-                      placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(
-                        color: AppColors.mainGreen,
-                      )),
+                      progressIndicatorBuilder: (context, url, progress) => ShimmerEffet(width: 164.w, height: 110.h),
                       errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                          const Center(child: Icon(Icons.error)),
                       fit: BoxFit.fill,
                     ),
                   ),

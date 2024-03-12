@@ -7,8 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/helpers/spacing.dart';
 import 'header_section.dart';
 
-class ProductsSection extends StatelessWidget {
-  const ProductsSection({super.key});
+class BestSellersSection extends StatelessWidget {
+  const BestSellersSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +20,12 @@ class ProductsSection extends StatelessWidget {
       builder: (context, state) {
         final cubtit = context.read<HomeCubit>();
         if (state is GetProductLoadingState) {
-          return const ProductListShimmer(title: AppStrings.products);
+          return const ProductListShimmer(title: AppStrings.bestSeller);
         } else if (state is GetProductSuccessState) {
           return Column(
             children: [
               HeaderSection(
-                headerTitle: AppStrings.products,
+                headerTitle: AppStrings.bestSeller,
                 productModel: cubtit.productList,
               ),
               verticalSpace(16),

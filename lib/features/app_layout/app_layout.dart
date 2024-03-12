@@ -1,17 +1,18 @@
-import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
+import 'package:e_commerce_firebase/features/app_layout/cubit/app_layout_cubit.dart';
+import 'package:e_commerce_firebase/features/app_layout/cubit/app_layout_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/theming/colors.dart';
+import '../../core/theming/colors.dart';
 
 class AppLayout extends StatelessWidget {
   const AppLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<AppLayoutCubit, AppLayoutState>(
       builder: (context, state) {
-        var cubit = HomeCubit.get(context);
+        var cubit = context.read<AppLayoutCubit>();
         return Scaffold(
           body: cubit.screens[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
