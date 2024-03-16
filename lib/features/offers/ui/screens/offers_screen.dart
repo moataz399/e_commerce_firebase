@@ -41,19 +41,18 @@ class OffersScreen extends StatelessWidget {
                 ),
               ),
               verticalSpace(16),
-              GridView.count(
+              GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16.0.w,
+                    mainAxisSpacing: 16.0.h,
+                    mainAxisExtent: 225.h),
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                mainAxisSpacing: 16.h,
-                crossAxisSpacing: 16.w,
                 clipBehavior: Clip.none,
-                childAspectRatio: (1 / 1.26).h,
-                children: List.generate(
-                  cubit.offersList.length,
-                  (index) => ProductItem(
-                    productModel: cubit.offersList[index],
-                  ),
+                itemCount: cubit.offersList.length,
+                itemBuilder: (context, index) => ProductItem(
+                  productModel: cubit.offersList[index],
                 ),
               )
             ],

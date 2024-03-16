@@ -83,6 +83,21 @@ class HomeCubit extends Cubit<HomeState> {
     } catch (e) {
       throw e.toString();
     }
+  } Future<void> addToCart(ProductModel product) async {
+
+    emit(AddingToCartLoadingState());
+    try {
+      await _homeRepo.addToCart(product);
+      print("added ${product.productId}");
+      emit(AddedToFav());
+
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw e.toString();
+    }
   }
 
   Future<bool> isProductFavorite(ProductModel product) async {

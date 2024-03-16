@@ -24,20 +24,19 @@ class CategoriesScreen extends StatelessWidget {
                 style: TextStyles.font18BlackBoldSemiBold,
               ),
               verticalSpace(16),
-              GridView.count(
+              GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16.0.w,
+                    mainAxisSpacing: 16.0.h,
+                    mainAxisExtent: 230.h),
+                itemCount: context.read<HomeCubit>().categoriesList.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                mainAxisSpacing: 16.h,
-                crossAxisSpacing: 16.w,
                 clipBehavior: Clip.none,
-                childAspectRatio: 1 / 1.2.h,
-                children: List.generate(
-                  context.read<HomeCubit>().categoriesList.length,
-                  (index) => CategoryScreenListItem(
-                    categoryModel:
-                        context.read<HomeCubit>().categoriesList[index],
-                  ),
+                itemBuilder: (context, index) => CategoryScreenListItem(
+                  categoryModel:
+                      context.read<HomeCubit>().categoriesList[index],
                 ),
               )
             ],

@@ -20,8 +20,8 @@ class CartScreen extends StatelessWidget {
               const CartTitle(),
               verticalSpace(40),
               //! Carts,
-              const CartItemList(),
-              //! Add Coupon & Order Summry,
+              const CartList(),
+              //! Add Coupon & Order Summary,
               const CartCouponAndOrderSummry(),
               verticalSpace(11),
             ],
@@ -32,4 +32,3 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
-

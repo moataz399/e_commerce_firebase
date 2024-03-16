@@ -127,9 +127,19 @@ class ProductDetailsScreen extends StatelessWidget {
               ),
               verticalSpace(16),
               AppTextButton(
-                  buttonText: "Add to Cart",
-                  textStyle: TextStyles.font15WhiteBold,
-                  onPressed: () {}),
+                buttonText: "Add to Cart",
+                textStyle: TextStyles.font15WhiteBold,
+                onPressed: () async {
+                  await cubit.addToCart(productModel);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.white,
+                      content: Text("Added to cart",
+                          style: TextStyles.font14GreenSemiBold),
+                    ),
+                  );
+                },
+              ),
               verticalSpace(24),
             ],
           ),
