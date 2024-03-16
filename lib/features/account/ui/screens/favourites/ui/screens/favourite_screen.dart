@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:e_commerce_firebase/core/helpers/spacing.dart';
+import 'package:e_commerce_firebase/core/theming/colors.dart';
 import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/features/home/data/models/product_model.dart';
 import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
@@ -21,12 +22,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
 
   @override
   void initState() {
-
     super.initState();
     _favoritesStream = context.read<HomeCubit>().listenToFavorites();
-    _favoritesSubscription = _favoritesStream.listen((List<ProductModel> data) {
-      // Handle stream data
-    });
+    _favoritesSubscription =
+        _favoritesStream.listen((List<ProductModel> data) {});
   }
 
   @override
@@ -50,7 +49,10 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
           stream: _favoritesStream,
           builder: (BuildContext context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                  child: CircularProgressIndicator(
+                color: AppColors.mainGreen,
+              ));
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else {
@@ -63,21 +65,25 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       verticalSpace(16),
-                      GridView.count(
-                        shrinkWrap: true,
-                        physics: const BouncingScrollPhysics(),
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 16.h,
-                        crossAxisSpacing: 16.w,
-                        clipBehavior: Clip.none,
-                        childAspectRatio: (1 / 1.26).h,
-                        children: List.generate(
-                          favoriteProducts.length,
-                          (index) => ProductItem(
-                              key: Key(
-                                  favoriteProducts[index].productId.toString()),
-                              productModel: favoriteProducts[index]),
+                      GridView.builder(
+                        itemCount: favoriteProducts.length,
+                        itemBuilder: (context, index) {
+                          return ProductItem(
+                            key: Key(
+                              favoriteProducts[index].productId.toString(),
+                            ),
+                            productModel: favoriteProducts[index],
+                          );
+                        },
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 16.0.w,
+                          mainAxisSpacing: 16.0.h,
+                          mainAxisExtent: 230.h
                         ),
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        clipBehavior: Clip.none,
                       )
                     ],
                   ),

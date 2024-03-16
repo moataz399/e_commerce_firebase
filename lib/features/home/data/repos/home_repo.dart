@@ -65,6 +65,61 @@ class HomeRepo {
     }
   }
 
+
+  Future<void> addToCart(ProductModel product) async {
+    try {
+      var cartRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('cart')
+          .doc(product.productId.toString());
+
+      return await cartRef.set(product.toJson());
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+
+  Future<void> removeFromCart(ProductModel product) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('cart')
+          .doc(product.productId.toString())
+          .delete();
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+  Future<List<ProductModel>> fetchUserCart() async {
+    try {
+      var cartSnapShot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('cart')
+          .get();
+
+      return cartSnapShot.docs
+          .map((doc) => ProductModel.fromJson(doc.data()))
+          .toList();
+    } on FirebaseException catch (e) {
+      throw AppFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw AppPlatformException(e.code).message;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
   Future<void> addFavoriteProduct(ProductModel product) async {
     try {
       var favoritesRef = FirebaseFirestore.instance
@@ -145,6 +200,19 @@ class HomeRepo {
         .doc(FirebaseAuth
             .instance.currentUser!.uid)
         .collection('favorites')
+        .snapshots()
+        .map((snapshot) {
+      return snapshot.docs
+          .map((doc) => ProductModel.fromJson(doc.data()))
+          .toList();
+    });
+  }
+  Stream<List<ProductModel>> listenToCart() {
+    return FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth
+            .instance.currentUser!.uid)
+        .collection('cart')
         .snapshots()
         .map((snapshot) {
       return snapshot.docs

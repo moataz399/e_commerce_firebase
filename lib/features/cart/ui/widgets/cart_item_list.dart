@@ -1,8 +1,8 @@
 import 'package:e_commerce_firebase/features/cart/ui/widgets/cart_item.dart';
 import 'package:flutter/material.dart';
 
-class CartItemList extends StatelessWidget {
-  const CartItemList({super.key});
+class CartList extends StatelessWidget {
+  const CartList({super.key});
 
   @override
   Widget build(BuildContext context) {

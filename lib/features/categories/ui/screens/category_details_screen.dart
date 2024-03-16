@@ -39,19 +39,18 @@ class CategoryDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(16),
-                GridView.count(
+                GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 16.0.w,
+                      mainAxisSpacing: 16.0.h,
+                      mainAxisExtent: 230.h),
+                  itemCount: items.length,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16.h,
-                  crossAxisSpacing: 16.w,
                   clipBehavior: Clip.none,
-                  childAspectRatio: (1 / 1.25).h,
-                  children: List.generate(
-                    items.length,
-                    (index) => ProductItem(
-                      productModel: items[index],
-                    ),
+                  itemBuilder: (context, index) => ProductItem(
+                    productModel: items[index],
                   ),
                 )
               ],

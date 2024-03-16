@@ -47,6 +47,8 @@ class GetCategoriesFailed extends HomeState {
   GetCategoriesFailed({required this.error});
 }
 class AddedToFav extends HomeState {}
+class AddedToCart extends HomeState {}
+class AddingToCartLoadingState extends HomeState {}
 class IsProductFavorite extends HomeState {}
 class DeletedFromFav extends HomeState {}
 class CheckFavoriteStatus extends HomeState {}

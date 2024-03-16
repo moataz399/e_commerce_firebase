@@ -2,6 +2,7 @@ import 'package:e_commerce_firebase/core/routing/routes.dart';
 import 'package:e_commerce_firebase/core/widgets/success_screen.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/Addresses/screens/addresses_screen.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/favourites/ui/screens/favourite_screen.dart';
+import 'package:e_commerce_firebase/features/account/ui/screens/my_orders/screens/my_orders_screen.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/notifications/ui/screens/notifications_screen.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/profile/ui/screens/change_password_screen.dart';
 import 'package:e_commerce_firebase/features/account/ui/screens/profile/ui/screens/edit_profile_screen.dart';
@@ -41,6 +42,10 @@ class AppRouter {
       case Routes.profileScreen:
         return MaterialPageRoute(
           builder: (_) => ProfileScreen(),
+        );
+      case Routes.myOrdersScreen:
+        return MaterialPageRoute(
+          builder: (_) => MyOrdersScreen(),
         );
       case Routes.changePasswordScreen:
         return MaterialPageRoute(
