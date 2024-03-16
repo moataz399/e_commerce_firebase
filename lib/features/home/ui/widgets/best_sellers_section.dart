@@ -12,24 +12,21 @@ class BestSellersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<HomeCubit>();
+
     return BlocBuilder<HomeCubit, HomeState>(
-      buildWhen: (previous, current) =>
-          current is GetProductSuccessState ||
-          current is GetProductLoadingState ||
-          current is GetProductFailedState,
       builder: (context, state) {
-        final cubtit = context.read<HomeCubit>();
         if (state is GetProductLoadingState) {
           return const ProductListShimmer(title: AppStrings.bestSeller);
-        } else if (state is GetProductSuccessState) {
+        } else if (cubit.productList.isNotEmpty) {
           return Column(
             children: [
               HeaderSection(
                 headerTitle: AppStrings.bestSeller,
-                productModel: cubtit.productList,
+                productModel: cubit.productList,
               ),
               verticalSpace(16),
-              ProductsListView(productModel: cubtit.productList),
+              ProductsListView(productModel: cubit.productList),
             ],
           );
         } else if (state is GetCategoriesFailed) {
@@ -37,7 +34,11 @@ class BestSellersSection extends StatelessWidget {
             child: Text(state.error),
           );
         } else {
-          return const SizedBox();
+          return Container(
+            height: 50,
+            width: 50,
+            color: Colors.red,
+          );
         }
       },
     );

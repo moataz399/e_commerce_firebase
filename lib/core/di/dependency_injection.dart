@@ -16,10 +16,13 @@ Future<void> setUpGetIt() async {
   getIt.registerLazySingleton<CacheHelper>(() => CacheHelper());
 
   //! AppLayout Cubit
-  getIt.registerFactory<AppLayoutCubit>(() => AppLayoutCubit());
+  getIt.registerLazySingleton<AppLayoutCubit>(() => AppLayoutCubit());
   //! Home Cubit & Home Repo
   getIt.registerLazySingleton<HomeRepo>(() => HomeRepo());
-  getIt.registerLazySingleton<HomeCubit>(() => HomeCubit(getIt()));
+  getIt.registerLazySingleton<HomeCubit>(
+    () => HomeCubit(getIt())
+
+  );
   //! Register Cubit & Register Repo
   getIt.registerLazySingleton<RegisterRepo>(() => RegisterRepo());
   getIt.registerFactory<RegisterCubit>(() => RegisterCubit(getIt()));

@@ -13,24 +13,21 @@ class FlashOffersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return BlocBuilder<HomeCubit, HomeState>(
-      buildWhen: (previous, current) =>
-          current is GetOffersFailed||
-          current is GetOffersSuccess ||
-          current is OffersLoading,
+    final cubit = context.read<HomeCubit>();
+
+    return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        final cubtit = context.read<HomeCubit>();
         if (state is OffersLoading) {
           return const ProductListShimmer(title: AppStrings.flashOffers);
-        } else if (state is GetOffersSuccess) {
+        } else if (cubit.offersList.isNotEmpty) {
           return Column(
             children: [
               HeaderSection(
                 headerTitle: AppStrings.flashOffers,
-                productModel: cubtit.offersList,
+                productModel: cubit.offersList,
               ),
               verticalSpace(16),
-              ProductsListView(productModel: cubtit.offersList),
+              ProductsListView(productModel: cubit.offersList),
             ],
           );
         } else if (state is GetOffersFailed) {
@@ -38,7 +35,9 @@ class FlashOffersSection extends StatelessWidget {
             child: Text(state.error),
           );
         } else {
-          return const SizedBox();
+          return const SizedBox(
+            child: Text("There is no data"),
+          );
         }
       },
     );

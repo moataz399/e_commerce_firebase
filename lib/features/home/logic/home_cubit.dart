@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -20,6 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
   List<CategoriesModel> categoriesList = [];
 
   Future getProductList() async {
+    productList = [];
     emit(GetProductLoadingState());
     try {
       var response = await _homeRepo.getProductList();
@@ -36,6 +38,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future getCategoriesList() async {
+    categoriesList = [];
     emit(GetCategoriesLoadingState());
     try {
       var response = await _homeRepo.getCategoriesList();
@@ -52,6 +55,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future getOffersList() async {
+    offersList = [];
     emit(OffersLoading());
     try {
       var response = await _homeRepo.getOffersList();
@@ -126,27 +130,4 @@ class HomeCubit extends Cubit<HomeState> {
   Stream<List<ProductModel>> listenToFavorites() {
     return _homeRepo.listenToFavorites();
   }
-
-  // late bool isFavorite ;
-  //
-  // void checkFavoriteStatus(ProductModel product) async {
-  //   bool result = await isProductFavorite(product);
-  //
-  //   isFavorite = result;
-  //   emit(CheckFavoriteStatus());
-  // }
-  //
-  // void toggleFavoriteStatus(ProductModel product) async {
-  //   if (isFavorite) {
-  //     // If currently a favorite, remove it
-  //     await removeFavoriteProduct(product);
-  //   } else {
-  //     // If not a favorite, add it
-  //     await addFavoriteProduct(product);
-  //   }
-  //   // Then update the state to reflect the change
-  //
-  //   isFavorite = !isFavorite;
-  //   emit(ToggleFav());
-  // }
 }

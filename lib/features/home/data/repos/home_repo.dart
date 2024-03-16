@@ -20,9 +20,7 @@ class HomeRepo {
       }).toList();
 
       return response;
-    } on FirebaseAuthException catch (e) {
-      throw AppFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
+    }  on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;
@@ -40,9 +38,7 @@ class HomeRepo {
       }).toList();
 
       return response;
-    } on FirebaseAuthException catch (e) {
-      throw AppFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
+    }  on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;
@@ -60,9 +56,7 @@ class HomeRepo {
       }).toList();
 
       return response;
-    } on FirebaseAuthException catch (e) {
-      throw AppFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
+    }  on FirebaseException catch (e) {
       throw AppFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;

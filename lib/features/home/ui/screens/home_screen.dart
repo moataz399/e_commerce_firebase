@@ -17,51 +17,48 @@ import '../widgets/product_section.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+
+
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<HomeCubit>()
-        ..getCategoriesList()
-        ..getProductList()
-        ..getOffersList(),
-      child: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                verticalSpace(32),
-                AppTextFormField(
-                  readOnly: true,
-                  contentPadding: EdgeInsets.only(top: 8.h, right: 12.w),
-                  onTap: () {
-                    context.pushNamed(Routes.searchScreen);
-                  },
-                  hintText: "Search for product..",
-                  textStyle: TextStyles.font12BlackSemiBold,
-                  height: 40.h,
-                  hintStyle: TextStyles.font12GrayRegular,
-                  validator: (value) {},
-                  prefixIcon: const Icon(
-                    Icons.search_outlined,
-                    size: 20,
-                  ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              verticalSpace(32),
+              AppTextFormField(
+                readOnly: true,
+                contentPadding: EdgeInsets.only(top: 8.h, right: 12.w),
+                onTap: () {
+                  context.pushNamed(Routes.searchScreen);
+                },
+                hintText: "Search for product..",
+                textStyle: TextStyles.font12BlackSemiBold,
+                height: 40.h,
+                hintStyle: TextStyles.font12GrayRegular,
+                validator: (value) {},
+                prefixIcon: const Icon(
+                  Icons.search_outlined,
+                  size: 20,
                 ),
-                verticalSpace(16),
-                const BannersSlider(),
-                verticalSpace(24),
-                const CategoriesSection(),
-                verticalSpace(24),
-                //! Get Products
-                const ProductsSection(),
-                verticalSpace(16),
-                //! Flash Offers,
-                const FlashOffersSection(),
-                verticalSpace(16),
-                const BestSellersSection(),
-              ],
-            ),
+              ),
+              verticalSpace(16),
+              const BannersSlider(),
+              verticalSpace(24),
+              const CategoriesSection(),
+              verticalSpace(24),
+              //! Get Products
+              const ProductsSection(),
+              verticalSpace(16),
+              //! Flash Offers,
+              const FlashOffersSection(),
+              verticalSpace(16),
+              const BestSellersSection(),
+            ],
           ),
         ),
       ),

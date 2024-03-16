@@ -1,3 +1,4 @@
+import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/core/utils/app_strings.dart';
 import 'package:e_commerce_firebase/core/widgets/product_list_shimmer.dart';
 import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
@@ -12,24 +13,24 @@ class ProductsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<HomeCubit>();
     return BlocBuilder<HomeCubit, HomeState>(
       buildWhen: (previous, current) =>
           current is GetProductSuccessState ||
           current is GetProductLoadingState ||
           current is GetProductFailedState,
       builder: (context, state) {
-        final cubtit = context.read<HomeCubit>();
         if (state is GetProductLoadingState) {
           return const ProductListShimmer(title: AppStrings.products);
-        } else if (state is GetProductSuccessState) {
+        } else if (cubit.productList.isNotEmpty) {
           return Column(
             children: [
               HeaderSection(
                 headerTitle: AppStrings.products,
-                productModel: cubtit.productList,
+                productModel: cubit.productList,
               ),
               verticalSpace(16),
-              ProductsListView(productModel: cubtit.productList),
+              ProductsListView(productModel: cubit.productList),
             ],
           );
         } else if (state is GetCategoriesFailed) {
@@ -37,7 +38,12 @@ class ProductsSection extends StatelessWidget {
             child: Text(state.error),
           );
         } else {
-          return const SizedBox();
+          return SizedBox(
+            child: Text(
+              "There is no data",
+              style: TextStyles.font18BlackSemiBold,
+            ),
+          );
         }
       },
     );

@@ -1,3 +1,4 @@
+import 'package:e_commerce_firebase/core/theming/text_styles.dart';
 import 'package:e_commerce_firebase/features/home/logic/home_cubit.dart';
 import 'package:e_commerce_firebase/features/home/ui/widgets/home_categories_shimmer.dart';
 import 'package:e_commerce_firebase/features/home/ui/widgets/home_category_item.dart';
@@ -10,16 +11,12 @@ class CategoriesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<HomeCubit>();
     return BlocBuilder<HomeCubit, HomeState>(
-      buildWhen: (previous, current) =>
-          current is GetCategoriesFailed ||
-          current is GetCategoriesSuccess ||
-          current is GetCategoriesLoadingState,
       builder: (context, state) {
-        final cubit = context.read<HomeCubit>();
         if (state is GetCategoriesLoadingState) {
           return const HomeCategoriesShimmer();
-        } else if (state is GetCategoriesSuccess) {
+        } else if (cubit.categoriesList.isNotEmpty) {
           return SizedBox(
             height: 93.h,
             child: ListView.builder(
@@ -40,7 +37,11 @@ class CategoriesSection extends StatelessWidget {
             ),
           );
         } else {
-          return SizedBox();
+          return Center(
+              child: Text(
+            "there is no data",
+            style: TextStyles.font18BlackSemiBold,
+          ));
         }
       },
     );

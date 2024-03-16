@@ -34,10 +34,6 @@ class AppRouter {
 
   Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.homeScreen:
-        return MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
-        );
       case Routes.editProfileScreen:
         return MaterialPageRoute(
           builder: (_) => EditProfileScreen(),
@@ -112,15 +108,9 @@ class AppRouter {
           ),
         );
 
-      case Routes.categoriesScreen:
-        return MaterialPageRoute(
-          builder: (_) => const CategoriesScreen(),
-        );
       case Routes.appLayout:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-              create: (context) => getIt<AppLayoutCubit>(),
-              child: const AppLayout()),
+          builder: (_) => const AppLayout(),
         );
       ///////////////////////////////////////////////////
       ///////////////////////////////////////////////////
